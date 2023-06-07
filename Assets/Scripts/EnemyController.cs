@@ -25,5 +25,6 @@ public class EnemyController : NetworkBehaviour
         moveVec = (playerTransform.position - transform.position).normalized;
 
         transform.Translate(moveVec * moveSpeed * Time.deltaTime);
+        Position.Value = transform.position;
     }
 }
