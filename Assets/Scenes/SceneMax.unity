@@ -131,10 +131,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6705674652616737013, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -6705674652616737013, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 585665982}
@@ -142,18 +138,6 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3168697485
       objectReference: {fileID: 0}
-    - target: {fileID: 252103508637457910, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 252103508637457910, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e304e368556d53d469839832ba49a92f, type: 2}
-    - target: {fileID: 252103508637457910, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: e304e368556d53d469839832ba49a92f, type: 2}
     - target: {fileID: 8727093935645449830, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -202,8 +186,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -6985960331741021218, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
 --- !u!4 &585665982 stripped
 Transform:
