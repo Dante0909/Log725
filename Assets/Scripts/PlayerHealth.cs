@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class PlayerHealth : MonoBehaviour
 {
     public static event Action<int> HealthChanged =  delegate{};
 
-    private int playerHealth;
+    [SerializeField]
+    private Transform enemyTransform;
+
+    public int playerHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (transform.position == enemyTransform.position)
         {
             DecreaseHealth();
         }
