@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneMax.unity
     guid: 265c51b2ecae5f14f99875aad7172264
+  - enabled: 1
+    path: Assets/Scenes/SceneDaki.unity
+    guid: c49ed9a7346b0c8468df01818558a27d
   m_configObjects: {}
