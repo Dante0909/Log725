@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public static event Action<int> HealthChanged =  delegate{};
 
     [SerializeField]
-    private Transform enemyTransform;
+    private Transform playerTransform;
 
     public int playerHealth;
     // Start is called before the first frame update
@@ -27,9 +27,15 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position == enemyTransform.position)
-        {
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player") {
+
             DecreaseHealth();
+            transform.position = Vector3.zero;
         }
     }
 }
