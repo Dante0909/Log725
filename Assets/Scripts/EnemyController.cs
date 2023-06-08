@@ -27,4 +27,16 @@ public class EnemyController : NetworkBehaviour
         transform.Translate(moveVec * moveSpeed * Time.deltaTime);
         Position.Value = transform.position;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.DecreaseHealth();
+
+            //to generate random
+            transform.position = Vector3.zero;
+        }
+    }
 }
