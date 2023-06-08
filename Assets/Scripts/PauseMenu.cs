@@ -38,6 +38,15 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    // Restart the game
+    public void Restart()
+    {
+        pauseMenuCanvas.SetActive(false);
+        //Time.timeScale = 1f;
+        isPaused = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     // Pause the game
     void Pause()
     {
