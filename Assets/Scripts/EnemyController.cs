@@ -22,15 +22,17 @@ public class EnemyController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
+        
         moveVec = (playerTransform.position - transform.position).normalized;
 
         transform.Translate(moveVec * moveSpeed * Time.deltaTime);
         Position.Value = transform.position;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             playerHealth.DecreaseHealth();

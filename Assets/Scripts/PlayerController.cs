@@ -21,6 +21,7 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
         transform.Translate(moveVec * moveSpeed * Time.deltaTime);
         Position.Value = transform.position;    
     }
