@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneDaki.unity
     guid: c49ed9a7346b0c8468df01818558a27d
+  - enabled: 1
+    path: Assets/Scenes/LeverScene.unity
+    guid: 4f1f9244ac3e4934f9d7420d298609e9
   m_configObjects: {}
