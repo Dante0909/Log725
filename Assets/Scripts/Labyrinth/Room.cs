@@ -6,6 +6,8 @@ using UnityEngine;
 public class Room
 {
     private Dictionary<Cardinal, Room> neighbours = new Dictionary<Cardinal, Room>();
+    private Dictionary<Cardinal, Corridor> corridors = new Dictionary<Cardinal, Corridor>();
+    private List<Room> pathToStart;
 
     public int X { get; private set; }
     public int Y { get; private set; }
@@ -53,6 +55,12 @@ public class Room
 
         r = g.GetRoom(X, Y + 1);
         if (r is not null) neighbours.Add(Cardinal.Top, r);
+    }
+
+    public void SetCorridor(Room adjacent, Corridor corridor)
+    {
+        Cardinal c = neighbours.First(x => x.Value == adjacent).Key;
+        corridors.TryAdd(c, corridor);
     }
 
     public Dictionary<Cardinal, Room> GetNeighbours()

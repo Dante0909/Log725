@@ -78,6 +78,11 @@ public class GridManager : MonoBehaviour
                     Gizmos.DrawSphere(r.GetPosition() * sizeBetweenRooms, 1);
                 }
             }
+
+            foreach (Corridor corridor in grid.GetCorridors())
+            {
+                Gizmos.DrawLine(corridor.GetRoomA().GetPosition() * sizeBetweenRooms, corridor.GetRoomB().GetPosition() * sizeBetweenRooms);
+            }
             
         }
     }

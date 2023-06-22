@@ -60,7 +60,7 @@ public class Pathfinding
             foreach (Room r in cur.GetNeighbours().Values)
             {
                 if (closedList.Contains(r)) continue;
-
+                
                 int tentativeCost = cur.Gcost + CalculateDistanceCost(cur, r);
                 if (tentativeCost < r.Gcost)
                 {
@@ -80,8 +80,10 @@ public class Pathfinding
         List<Room> path = new List<Room>();
         path.Add(endRoom);
         var cur = endRoom;
+
         while (cur.GetCFN() is not null)
         {
+            grid.AddCorridor(cur.GetCFN(), cur);
             cur.IsChecked = true;
             path.Add(cur.GetCFN());
             cur = cur.GetCFN();
