@@ -28,7 +28,7 @@ public class EnemyController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (!IsOwner) return;
+        if (IsOwner) return;
         //moveVec = (playerTransform.position - transform.position).normalized;
 
         //if (!IsClient) return;
@@ -38,7 +38,7 @@ public class EnemyController : NetworkBehaviour
 
     public void OnMoveGhost(InputValue input)
     {
-        if (!IsOwner) return;
+        if (IsOwner) return;
         Vector2 inputVec = input.Get<Vector2>();
 
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);
