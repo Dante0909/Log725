@@ -23,9 +23,6 @@ public class EnemyController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!IsOwner) return;
-
         //moveVec = (playerTransform.position - transform.position).normalized;
         if (Input.GetKey(KeyCode.UpArrow))  
         {  
