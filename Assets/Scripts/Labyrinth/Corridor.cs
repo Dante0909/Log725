@@ -13,8 +13,22 @@ public class Corridor
         return roomA == r ? roomB : roomA;
     }
 
-    public Corridor()
+    public Corridor(Room a, Room b)
     {
+        roomA = a;
+        roomB = b;
 
+        roomA.SetCorridor(b, this);
+        roomB.SetCorridor(a, this);
+
+    }
+
+    public Room GetRoomA()
+    {
+        return roomA;
+    }
+    public Room GetRoomB()
+    {
+        return roomB;
     }
 }
