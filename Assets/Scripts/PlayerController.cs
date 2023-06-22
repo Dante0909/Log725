@@ -19,22 +19,31 @@ public class PlayerController : NetworkBehaviour
     public int nbKeys = 0;
     public TextMeshProUGUI remainingKeysText;
     public GameObject door;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         SetCountText();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveVec * moveSpeed * Time.deltaTime);
-        Position.Value = transform.position;    
+        
     }
 
-    public void OnMove(InputValue input)
+    private void FixedUpdate()
     {
+        if (!IsOwner) return;
+        rb.velocity = moveVec * moveSpeed * Time.fixedDeltaTime;
+        Position.Value = transform.position;
+    }
+
+    public void OnMovePlayer(InputValue input)
+    {
+        if (!IsOwner) return;
         Vector2 inputVec = input.Get<Vector2>();
 
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);

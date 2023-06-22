@@ -13,41 +13,35 @@ public class EnemyController : NetworkBehaviour
     private float moveSpeed;
     [SerializeField]
     private Transform playerTransform;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //moveVec = (playerTransform.position - transform.position).normalized;
-        if (Input.GetKey(KeyCode.UpArrow))  
-        {  
-            moveVec = new Vector3(0, 0, 1);
-        }  
-         
-        if (Input.GetKey(KeyCode.DownArrow))  
-        {  
-            moveVec = new Vector3(0, 0, -1);
-        }  
-         
-        if (Input.GetKey(KeyCode.LeftArrow))  
-        {  
-            moveVec = new Vector3(-1, 0, 0);
-        }  
-        
-        if (Input.GetKey(KeyCode.RightArrow))  
-        {  
-            moveVec = new Vector3(1, 0, 0);
-        }  
-        
-        transform.Translate(moveVec * moveSpeed * Time.deltaTime);
-        Position.Value = transform.position;
+    }
 
-        moveVec = new Vector3(0, 0, 0);
+    private void FixedUpdate()
+    {
+        if (!IsOwner) return;
+        //moveVec = (playerTransform.position - transform.position).normalized;
+
+        //if (!IsClient) return;
+        rb.velocity = moveVec * moveSpeed * Time.fixedDeltaTime;
+        Position.Value = transform.position;
+    }
+
+    public void OnMoveGhost(InputValue input)
+    {
+        if (!IsOwner) return;
+        Vector2 inputVec = input.Get<Vector2>();
+
+        moveVec = new Vector3(inputVec.x, 0, inputVec.y);
     }
 
     private void OnTriggerEnter(Collider collision)
