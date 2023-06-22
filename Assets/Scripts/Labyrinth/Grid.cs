@@ -16,7 +16,7 @@ public class Grid
     private Room endRoom;
 
     private Room[,] rooms;
-    private List<Room> corridors;
+    private List<Corridor> corridors = new List<Corridor>();
 
     public Grid(int width, int height, int startX, int startY, int endX, int endY)
     {
@@ -88,6 +88,12 @@ public class Grid
         } while (emptyCounter / (width * height) > 0.3f || neighbourFlag);
     }
 
+    public void AddCorridor(Room a, Room b)
+    {
+        Corridor corridor = new Corridor(a, b);
+        corridors.Add(corridor);
+    }
+
     private List<Corridor> CreateCorridors()
     {
         List<Corridor> corrs = new List<Corridor>();
@@ -112,6 +118,10 @@ public class Grid
         return rooms;
     }
 
+    public List<Corridor> GetCorridors()
+    {
+        return corridors;
+    }
     public Room GetStartRoom()
     {
         return startRoom;
