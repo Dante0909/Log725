@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class PlayerHealth : MonoBehaviour
     {
         playerHealth--;
         HealthChanged?.Invoke(playerHealth);
+
+        if (playerHealth <= 0)
+        {
+            SceneManager.LoadScene("EndGhostWin");
+        }
     }
 
     // Update is called once per frame
