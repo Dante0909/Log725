@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RoomTemplate2.unity
     guid: 7c2e9df8752ae454b8bc134bbbac68d9
+  - enabled: 1
+    path: Assets/Scenes/TunnelTemplate.unity
+    guid: 63904b583b40b004ab69daeba094d6c9
   m_configObjects: {}
