@@ -54,7 +54,7 @@ public class PlayerController : NetworkBehaviour
 
         if (other.gameObject.CompareTag("TriggerVictory") && countCollectedKeys == nbKeys)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("EndPlayerWin");
         }
     }
 

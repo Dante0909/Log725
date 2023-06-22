@@ -902,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6827866821985964022, guid: 8a27e04c63bf6e944aed6f937ba3bc40, type: 3}
       propertyPath: m_Name
-      value: MenuManager
+      value: PauseManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a27e04c63bf6e944aed6f937ba3bc40, type: 3}
