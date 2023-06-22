@@ -23,6 +23,9 @@ public class EnemyController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!IsOwner) return;
+
         //moveVec = (playerTransform.position - transform.position).normalized;
         if (Input.GetKey(KeyCode.UpArrow))  
         {  
@@ -50,9 +53,9 @@ public class EnemyController : NetworkBehaviour
         moveVec = new Vector3(0, 0, 0);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             playerHealth.DecreaseHealth();
