@@ -924,6 +924,7 @@ MonoBehaviour:
   gridHeight: 15
   gridWidth: 15
   sizeBetweenRooms: 5
+  numberOfKeys: 5
 --- !u!4 &1788557603
 Transform:
   m_ObjectHideFlags: 0
