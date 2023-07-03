@@ -7,6 +7,7 @@ public class Pathfinding
 {
     private Grid grid;
     private Room startRoom;
+    private Room trueEndRoom;
     private List<Room> openList;
     private List<Room> closedList;
 
@@ -14,6 +15,7 @@ public class Pathfinding
     {
         this.grid = grid;
         this.startRoom = grid.GetStartRoom();
+        this.trueEndRoom = grid.GetEndRoom();
     }
 
     public bool VerifyInitialGrid()
@@ -88,7 +90,15 @@ public class Pathfinding
             path.Add(cur.GetCFN());
             cur = cur.GetCFN();
         }
+
+        //deaden
+        if (endRoom.GetNeighbours().Count == 1 && endRoom != trueEndRoom)
+        {
+            endRoom.DistanceFromStart = path.Count;
+        }
+        
         path.Reverse();
+        
         return path;
     }
 
