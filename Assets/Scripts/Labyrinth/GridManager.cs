@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int gridHeight;
     [SerializeField] private int gridWidth;
     [SerializeField] private int sizeBetweenRooms;
+    [SerializeField] private int numberOfKeys;
     private static GridManager instance = null;
     private Grid grid;
     private Pathfinding pathfinding;
@@ -39,8 +41,27 @@ public class GridManager : MonoBehaviour
             pathfinding = new Pathfinding(grid);
             good = pathfinding.VerifyInitialGrid();
             safe++;
+            
         } while (good == false && safe < 1000);
 
+        List<Room> deadEnds = new List<Room>();
+
+        foreach (Room room in grid.GetRooms())
+        {
+            if (room is not null && room.DistanceFromStart != 0)
+            {
+                deadEnds.Add(room);
+            }
+
+        }
+
+        deadEnds = deadEnds.OrderBy(x => x.DistanceFromStart).ToList();
+        int average = Mathf.FloorToInt((float)deadEnds.Count / (float)numberOfKeys);
+
+        for (int i = 0; i < numberOfKeys; ++i)
+        {
+            deadEnds[i * average].ContainsKey = true;
+        }
     }
 
     // Start is called before the first frame update
@@ -74,11 +95,20 @@ public class GridManager : MonoBehaviour
                     {
                         Gizmos.color = Color.black;
                     }
-                    else Gizmos.color = Color.white;
+                    else if (r.ContainsKey)
+                    {
+                        Gizmos.color = Color.blue;
+                    }
+                    else
+                    {
+                        Gizmos.color = Color.white;
+                    }
+
                     Gizmos.DrawSphere(r.GetPosition() * sizeBetweenRooms, 1);
                 }
             }
 
+            Gizmos.color = Color.white;
             foreach (Corridor corridor in grid.GetCorridors())
             {
                 Gizmos.DrawLine(corridor.GetRoomA().GetPosition() * sizeBetweenRooms, corridor.GetRoomB().GetPosition() * sizeBetweenRooms);
