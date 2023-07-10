@@ -509,6 +509,14 @@ MonoBehaviour:
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 500
+  lightGems:
+  - {fileID: 1011319553682498, guid: 8ad137f6808375f4e885d60451f0c4fc, type: 3}
+  - {fileID: 1288543304402976, guid: 5f66f0f2ec3592c4bb1a9626364fb9c3, type: 3}
+  - {fileID: 1591381487688778, guid: 2832fc268e26c1449b4a6371354d06f5, type: 3}
+  - {fileID: 1305964118088936, guid: ffb606a81585e3a4090cc0f8dedd8f47, type: 3}
+  - {fileID: 1903079753970086, guid: d43f3f63132c0214d87d74f89bd7bcd3, type: 3}
+  - {fileID: 1150642482621776, guid: 3b7897b21791f9e46a757b6b21d0213f, type: 3}
+  lightGemCooldown: 3
   nbKeys: 0
   remainingKeysText: {fileID: 0}
   door: {fileID: 0}
