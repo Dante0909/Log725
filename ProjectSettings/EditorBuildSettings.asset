@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TunnelTemplate.unity
     guid: 63904b583b40b004ab69daeba094d6c9
+  - enabled: 1
+    path: Assets/Scenes/KeyTestScene.unity
+    guid: 1cf137dba0f663343926001ef2dead7d
   m_configObjects: {}

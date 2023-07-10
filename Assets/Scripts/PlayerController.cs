@@ -14,6 +14,11 @@ public class PlayerController : NetworkBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    // LightGems
+    public GameObject[] lightGems;
+    public float lightGemCooldown = 3.0f;
+    private float lightGemCooldownTimer = 0.0f;
+
     // Keys collected
     private int countCollectedKeys = 0;
     public int nbKeys = 0;
@@ -36,7 +41,12 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > lightGemCooldownTimer)
+        {
+            lightGemCooldownTimer = Time.time + lightGemCooldown;
+            OnCreateLightGem();
+        }
+
     }
 
     private void FixedUpdate()
@@ -81,5 +91,18 @@ public class PlayerController : NetworkBehaviour
             door.SetActive(false);
             remainingKeysText.text = "Find the exit !";
         }
+    }
+
+    public void OnCreateLightGem()
+    {
+        // Create a new light gem at the player's position on ground
+        Vector3 playerPos = transform.position;
+        Vector3 lightGemPos = new Vector3(playerPos.x, 0.0f, playerPos.z);
+
+        // Randomly choose a light gem
+        int randomIndex = Random.Range(0, lightGems.Length);
+        GameObject lightGem = lightGems[randomIndex];
+
+        Instantiate(lightGem, lightGemPos, Quaternion.identity);
     }
 }
