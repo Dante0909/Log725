@@ -6,7 +6,22 @@ using UnityEngine;
 
 public class CustomNetworkManager : NetworkManager
 {
-    public bool IsClientConnected;
+    public static new CustomNetworkManager Singleton { get; internal set; }
+    
+    public GameObject GhostGameObject;
+    
+    private void Awake()
+    {
+        
+        if (Singleton != null)
+        {
+            // As long as you aren't creating multiple NetworkManager instances, throw an exception.
+            // (***the current position of the callstack will stop here***)
+            throw new Exception($"Detected more than one instance of {nameof(CustomNetworkManager)}! " +
+                                $"Do you have more than one component attached to a {nameof(GameObject)}");
+        }
+        Singleton = this;
+    }
     
     private void Start()
     {
@@ -15,15 +30,16 @@ public class CustomNetworkManager : NetworkManager
     
     private void OnClientConnected(ulong clientId, ConnectionNotificationManager.ConnectionStatus connStatus)
     {
-        IsClientConnected = connStatus == ConnectionNotificationManager.ConnectionStatus.Connected;
+        if (!IsHost || ConnectedClientsIds.Count <= 1) return;
+        ClientManager.Singleton.IsClientConnected.Value = connStatus == ConnectionNotificationManager.ConnectionStatus.Connected;
 
-        if (IsClientConnected)
+        if (ClientManager.Singleton.IsClientConnected.Value)
         {
-            GetComponent<NetworkObject>().ChangeOwnership(clientId);
+            GhostGameObject.GetComponent<NetworkObject>().ChangeOwnership(clientId);
         }
         else
         {
-            GetComponent<NetworkObject>().RemoveOwnership();
+            GhostGameObject.GetComponent<NetworkObject>().RemoveOwnership();
         }
         
     }

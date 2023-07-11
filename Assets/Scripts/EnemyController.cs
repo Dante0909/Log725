@@ -14,8 +14,6 @@ public class EnemyController : NetworkBehaviour
     private Transform playerTransform;
     private Rigidbody rb;
 
-    private bool isClientConnected;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +30,7 @@ public class EnemyController : NetworkBehaviour
     private void FixedUpdate()
     {
 
-        if (!isClientConnected)
+        if (!ClientManager.Singleton.IsClientConnected.Value && IsHost)
         {
             moveVec = (playerTransform.position - transform.position).normalized;
         }
@@ -42,10 +40,16 @@ public class EnemyController : NetworkBehaviour
 
     public void OnMoveGhost(InputValue input)
     {
-        if (!IsOwner || !isClientConnected) return;
+        Debug.Log("\nOwnerClientID during OnMove" + OwnerClientId);
+        Debug.Log("\nIsOwner : " + IsOwner);
+        Debug.Log("\nClient connected : " + ClientManager.Singleton.IsClientConnected.Value);
+        
+        if (!IsOwner || !ClientManager.Singleton.IsClientConnected.Value) return;
+        Debug.Log("\nGot Here");
         Vector2 inputVec = input.Get<Vector2>();
 
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);
+        Debug.Log("\nmoveVec : " + moveVec);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -62,18 +66,9 @@ public class EnemyController : NetworkBehaviour
 
     private void OnClientConnected(ulong clientId, ConnectionNotificationManager.ConnectionStatus connStatus)
     {
-        isClientConnected = connStatus == ConnectionNotificationManager.ConnectionStatus.Connected;
-        moveVec = Vector3.zero;
-
-        if (isClientConnected)
-        {
-            GetComponent<NetworkObject>().ChangeOwnership(clientId);
-            moveVec = Vector3.zero;
-        }
-        else
-        {
-            GetComponent<NetworkObject>().RemoveOwnership();
-        }
+        Debug.Log("\nOwnerClientID : " + OwnerClientId);
+        Debug.Log("\nNew Client : " + clientId);
         
+        moveVec = Vector3.zero;
     }
 }
