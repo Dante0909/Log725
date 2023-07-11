@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class EnemyController : NetworkBehaviour
 {
     private Vector3 moveVec;
-    public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
 
     [SerializeField]
     private float moveSpeed;
@@ -15,10 +14,14 @@ public class EnemyController : NetworkBehaviour
     private Transform playerTransform;
     private Rigidbody rb;
 
+    private bool isClientConnected;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
+        ConnectionNotificationManager.Singleton.OnClientConnectionNotification += OnClientConnected;
     }
 
     // Update is called once per frame
@@ -28,17 +31,18 @@ public class EnemyController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (!IsOwner) return;
-        //moveVec = (playerTransform.position - transform.position).normalized;
 
-        //if (!IsClient) return;
+        if (!isClientConnected)
+        {
+            moveVec = (playerTransform.position - transform.position).normalized;
+        }
+        
         rb.velocity = moveVec * moveSpeed * Time.fixedDeltaTime;
-        Position.Value = transform.position;
     }
 
     public void OnMoveGhost(InputValue input)
     {
-        if (!IsOwner) return;
+        if (!IsOwner || !isClientConnected) return;
         Vector2 inputVec = input.Get<Vector2>();
 
         moveVec = new Vector3(inputVec.x, 0, inputVec.y);
@@ -54,5 +58,22 @@ public class EnemyController : NetworkBehaviour
             //to generate random
             transform.position = Vector3.zero;
         }
+    }
+
+    private void OnClientConnected(ulong clientId, ConnectionNotificationManager.ConnectionStatus connStatus)
+    {
+        isClientConnected = connStatus == ConnectionNotificationManager.ConnectionStatus.Connected;
+        moveVec = Vector3.zero;
+
+        if (isClientConnected)
+        {
+            GetComponent<NetworkObject>().ChangeOwnership(clientId);
+            moveVec = Vector3.zero;
+        }
+        else
+        {
+            GetComponent<NetworkObject>().RemoveOwnership();
+        }
+        
     }
 }
