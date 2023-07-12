@@ -100,7 +100,8 @@ GameObject:
   - component: {fileID: -6397290786913583827}
   - component: {fileID: 1953744235}
   - component: {fileID: 1953744242}
-  - component: {fileID: 2429801662342796100}
+  - component: {fileID: 2627168132222776128}
+  - component: {fileID: 1148428403981568715}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -144,8 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c238c5dc6a14748b68c977596b48de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position:
-    m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 300
   playerTransform: {fileID: 0}
 --- !u!23 &252103508637457910
@@ -269,7 +268,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2429801662342796100
+--- !u!114 &2627168132222776128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8727093935645449830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 26942b0260b56e74ab6c3eb47453e5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -299,3 +298,15 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &1148428403981568715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8727093935645449830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Key
   - TriggerVictory
+  - KeyUI
   layers:
   - Default
   - TransparentFX

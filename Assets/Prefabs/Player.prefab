@@ -244,7 +244,7 @@ MonoBehaviour:
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 500
-  nbKeys: 0
+  nbKeys: 1
   remainingKeysText: {fileID: 0}
   door: {fileID: 0}
 --- !u!23 &8782928279199653711
