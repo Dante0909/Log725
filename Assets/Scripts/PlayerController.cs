@@ -13,6 +13,10 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float rotationSpeed;
+    [SerializeField]
+    private Transform cam;
 
     // Keys collected
     private int countCollectedKeys = 0;
@@ -31,7 +35,10 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var horizontal = Input.GetAxisRaw("Horizontal");
+        var vertical = Input.GetAxisRaw("Vertical");
+
+        MovePlayer(horizontal, vertical);
     }
 
     private void FixedUpdate()
@@ -41,12 +48,31 @@ public class PlayerController : NetworkBehaviour
         Position.Value = transform.position;
     }
 
-    public void OnMovePlayer(InputValue input)
+    public void MovePlayer(float horizontal, float vertical)
     {
         if (!IsOwner) return;
-        Vector2 inputVec = input.Get<Vector2>();
 
-        moveVec = new Vector3(inputVec.x, 0, inputVec.y);
+        var camForward = cam.forward;
+        camForward.y = 0;
+
+        print(camForward);
+
+        var camRight = cam.right;
+        camRight.y = 0;
+
+        Vector3 relativeMove = vertical * camForward + horizontal * camRight;
+
+        moveVec = relativeMove;
+
+        print(relativeMove);
+
+        var characterRotateNeeded = horizontal != 0;
+
+        if(moveVec != Vector3.zero && characterRotateNeeded){
+            Quaternion toRotate = Quaternion.LookRotation(moveVec, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.fixedDeltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
