@@ -99,6 +99,9 @@ public class GridManager : NetworkBehaviour
             if(c is null) continue;
             GameObject g = Instantiate(corridorPrefab, c.GetPosition() * sizeBetweenRooms, transform.rotation);
             if (c.GetRoomA().Y != c.GetRoomB().Y) g.transform.Rotate(Vector3.up, 90);
+            NetworkObject networkG = g.GetComponent<NetworkObject>();
+            g.SetActive(true);
+            networkG.Spawn();
         }
     }
 
@@ -173,6 +176,10 @@ public class GridManager : NetworkBehaviour
                     Transform key = RecursiveChildSearch(g.transform, "Key");
                     if (key is not null) Destroy(key.gameObject);
                 }
+
+                NetworkObject networkG = g.GetComponent<NetworkObject>();
+                g.SetActive(true);
+                networkG.Spawn();
             }
         }
     }
