@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager : NetworkBehaviour
 {
     [SerializeField] private int gridHeight;
     [SerializeField] private int gridWidth;
@@ -27,6 +28,10 @@ public class GridManager : MonoBehaviour
     }
 
     public Grid GetGrid() => grid;
+    public int SizeBetweenRooms => sizeBetweenRooms;
+    public int GridHeight => gridHeight;
+    public int GridWidth => gridWidth;
+    public int NumberOfKeys => numberOfKeys;
 
     public void CreateNewGrid()
     {
@@ -79,9 +84,12 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateNewGrid();
-        SpawnPhysicalRooms();
-        SpawnCorridors();
+        if (IsHost)
+        {
+            CreateNewGrid();
+            SpawnPhysicalRooms();
+            SpawnCorridors();
+        }
     }
 
     void SpawnCorridors()
@@ -91,6 +99,9 @@ public class GridManager : MonoBehaviour
             if(c is null) continue;
             GameObject g = Instantiate(corridorPrefab, c.GetPosition() * sizeBetweenRooms, transform.rotation);
             if (c.GetRoomA().Y != c.GetRoomB().Y) g.transform.Rotate(Vector3.up, 90);
+            NetworkObject networkG = g.GetComponent<NetworkObject>();
+            g.SetActive(true);
+            networkG.Spawn();
         }
     }
 
@@ -165,6 +176,10 @@ public class GridManager : MonoBehaviour
                     Transform key = RecursiveChildSearch(g.transform, "Key");
                     if (key is not null) Destroy(key.gameObject);
                 }
+
+                NetworkObject networkG = g.GetComponent<NetworkObject>();
+                g.SetActive(true);
+                networkG.Spawn();
             }
         }
     }
