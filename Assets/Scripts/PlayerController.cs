@@ -60,8 +60,7 @@ public class PlayerController : NetworkBehaviour
             lightGemCooldownTimer = Time.time + lightGemCooldown;
             OnCreateLightGem();
         }
-        
-        print("PLAYER: " + transform.position);
+
         camera.transform.position = transform.position + new Vector3(0, 7f, -3.5f);
 
         if(moveVec != Vector3.zero){
