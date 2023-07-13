@@ -15,6 +15,8 @@ public class PlayerController : NetworkBehaviour
     private float moveSpeed;
     [SerializeField]
     private float rotationSpeed;
+    [SerializeField]
+    private GameObject camera;
 
     // LightGems
     public GameObject[] lightGems;
@@ -27,7 +29,6 @@ public class PlayerController : NetworkBehaviour
     public TextMeshProUGUI remainingKeysText;
     public GameObject door;
     private Rigidbody rb;
-    private GameObject camera;
 
     // Sounds
     public AudioClip keySound;
@@ -41,7 +42,7 @@ public class PlayerController : NetworkBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        camera = this.transform.GetChild(0).gameObject;
+        //camera = this.transform.GetChild(0).gameObject;
         nbKeys = GridManager.Singleton.NumberOfKeys;
         animator = GetComponent<Animator>();
         if(IsHost)
@@ -60,7 +61,7 @@ public class PlayerController : NetworkBehaviour
             OnCreateLightGem();
         }
 
-        camera.transform.rotation=Quaternion.Euler(Vector3.zero);
+        camera.transform.position = transform.position + new Vector3(0, 7f, -3.5f);
 
         if(moveVec != Vector3.zero){
             animator.SetFloat("speed", 2);

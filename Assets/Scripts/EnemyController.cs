@@ -12,15 +12,16 @@ public class EnemyController : NetworkBehaviour
     private float moveSpeed;
     [SerializeField]
     private Transform playerTransform;
-    private Rigidbody rb;
+    [SerializeField]
     private GameObject camera;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
-        camera = this.transform.GetChild(0).gameObject;
+        //camera = this.GetComponentInChildren<Camera>().gameObject;
         if(!IsHost)
             camera.SetActive(true);
         ConnectionNotificationManager.Singleton.OnClientConnectionNotification += OnClientConnected;

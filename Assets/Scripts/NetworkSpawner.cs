@@ -25,14 +25,14 @@ public class NetworkSpawner : NetworkBehaviour
 
 
         GameObject ghostPlayer = (GameObject)Instantiate(players[1], ghostPosition, transform.rotation);
-        NetworkObject netObj1 = ghostPlayer.GetComponent<NetworkObject>();
+        NetworkObject netObj1 = ghostPlayer.GetComponentInChildren<NetworkObject>();
         ghostPlayer.SetActive(true);
         netObj1.Spawn();
 
         CustomNetworkManager.Singleton.GhostGameObject = ghostPlayer;
 
             GameObject mainPlayer = (GameObject)Instantiate(players[0], startPosition, transform.rotation);
-        NetworkObject netObj2 = mainPlayer.GetComponent<NetworkObject>();
+        NetworkObject netObj2 = mainPlayer.GetComponentInChildren<NetworkObject>();
         mainPlayer.SetActive(true);
         netObj2.Spawn(true);
 

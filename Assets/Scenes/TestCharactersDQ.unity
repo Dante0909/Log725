@@ -945,7 +945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8076300708739873705, guid: b8a805897c10ba34488d4b050157f287, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 4143465480
+      value: 2306834118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a805897c10ba34488d4b050157f287, type: 3}
@@ -958,7 +958,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2285178191381126864, guid: a84b9cadc74e9ee479fdcb5e88a8bce5, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 1249388830
+      value: 2095844381
       objectReference: {fileID: 0}
     - target: {fileID: 2285178191381126865, guid: a84b9cadc74e9ee479fdcb5e88a8bce5, type: 3}
       propertyPath: m_RootOrder
@@ -1020,11 +1020,11 @@ PrefabInstance:
     - target: {fileID: 4001770465544027416, guid: 81d155a98c87535408e2493577ab8124, type: 3}
       propertyPath: players.Array.data[0]
       value: 
-      objectReference: {fileID: 5507080334254613015, guid: 3c8b95262c3df73449dbce6a6e335696, type: 3}
+      objectReference: {fileID: 1800003147506865098, guid: dd26bc49cc3ffd248bf5d652701ad7d1, type: 3}
     - target: {fileID: 4001770465544027416, guid: 81d155a98c87535408e2493577ab8124, type: 3}
       propertyPath: players.Array.data[1]
       value: 
-      objectReference: {fileID: 4207708073113271594, guid: a951f2c500c8e004185f0a91873eb61c, type: 3}
+      objectReference: {fileID: 3370824278316362864, guid: b98fbe7c38cca9b4f917b193152c8df6, type: 3}
     - target: {fileID: 4001770465544027417, guid: 81d155a98c87535408e2493577ab8124, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 919263193
