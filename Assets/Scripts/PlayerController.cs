@@ -67,7 +67,7 @@ public class PlayerController : NetworkBehaviour
             animator.SetFloat("speed", 2);
             Quaternion toRotate = Quaternion.LookRotation(moveVec, Vector3.up);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
         } else {
             animator.SetFloat("speed", 0);
         }
@@ -108,7 +108,9 @@ public class PlayerController : NetworkBehaviour
 
         if (countCollectedKeys == nbKeys)
         {
+            Debug.Log("Keys collected");
             GridManager.Singleton.TriggerVictory.SetActive(true);
+            Debug.Log("Door spawned");
             AudioSource.PlayClipAtPoint(doorSound, transform.position);
             remainingKeysText.text = "Find the exit !";
         }

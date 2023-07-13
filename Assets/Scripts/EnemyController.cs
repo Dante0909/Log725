@@ -36,11 +36,11 @@ public class EnemyController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("\nIsClientConnected : " + ClientManager.Singleton.IsClientConnected.Value + " IsHost : " + IsHost);
+        //Debug.Log("\nIsClientConnected : " + ClientManager.Singleton.IsClientConnected.Value + " IsHost : " + IsHost);
         if (!ClientManager.Singleton.IsClientConnected.Value && IsHost)
         {
             moveVec = (playerTransform.position - transform.position).normalized;
-            Debug.Log("\nmoveVec : " + moveVec);
+            //Debug.Log("\nmoveVec : " + moveVec);
         }
         
         rb.velocity = moveVec * moveSpeed * Time.fixedDeltaTime;
@@ -53,9 +53,10 @@ public class EnemyController : NetworkBehaviour
         //Debug.Log("\nClient connected : " + ClientManager.Singleton.IsClientConnected.Value);
         
         if (!IsOwner || !ClientManager.Singleton.IsClientConnected.Value) return;
+        Debug.Log("Got here");
         Vector2 inputVec = input.Get<Vector2>();
         MoveServerRpc(inputVec.x, 0, inputVec.y);
-        //Debug.Log("\nmoveVec : " + moveVec);
+        Debug.Log("\nmoveVec : " + moveVec);
     }
 
     [ServerRpc]

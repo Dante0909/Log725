@@ -514,11 +514,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
-  moveSpeed: 500
-  rotationSpeed: 30
+  moveSpeed: 300
+  rotationSpeed: 100
   camera: {fileID: 1800003146660863182}
-  lightGems: []
-  lightGemCooldown: 3
+  lightGems:
+  - {fileID: 6629206107896418208, guid: 015a92a1610034c4697d9e0c2ab2bc89, type: 3}
+  - {fileID: 2282742065287548191, guid: 769f96a1be42bfe4099d0102e21715f2, type: 3}
+  - {fileID: 6455386285097541050, guid: c6bd98d93ff918e43be37f82f6a6e68e, type: 3}
+  - {fileID: 6812453900789682542, guid: f0c02e7a0ee387e4f84304932638ae51, type: 3}
+  lightGemCooldown: 2
   remainingKeysText: {fileID: 0}
   keySound: {fileID: 8300000, guid: 120d6f5a3fdc7d2479004eb4cac42186, type: 3}
   doorSound: {fileID: 8300000, guid: 84364ed871ae47b48a660f172ba48a96, type: 3}
