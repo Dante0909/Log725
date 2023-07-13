@@ -14,11 +14,9 @@ public class EnemyController : NetworkBehaviour
     private Transform playerTransform;
     [SerializeField]
     private GameObject camera;
-<<<<<<< HEAD
     private Rigidbody rb;
-=======
     private AiControllerState aiControllerState;
->>>>>>> mathias
+
 
     // Start is called before the first frame update
     void Start()
