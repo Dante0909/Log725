@@ -14,6 +14,8 @@ public class GridManager : NetworkBehaviour
     [SerializeField] private int numberOfKeys;
     [SerializeField] private GameObject[] roomPrefabs;
     [SerializeField] private GameObject corridorPrefab;
+    [SerializeField] private GameObject triggerVictoryPrefab;
+    [SerializeField] private GameObject triggerVictory;
     private static GridManager instance = null;
     private Grid grid;
     private Pathfinding pathfinding;
@@ -25,6 +27,7 @@ public class GridManager : NetworkBehaviour
     public int GridHeight => gridHeight;
     public int GridWidth => gridWidth;
     public int NumberOfKeys => numberOfKeys;
+    public GameObject TriggerVictory => triggerVictory;
 
     public void CreateNewGrid()
     {
@@ -177,6 +180,11 @@ public class GridManager : NetworkBehaviour
                 { 
                     Transform key = RecursiveChildSearch(g.transform, "Key");
                     if (key is not null) Destroy(key.gameObject);
+                }
+
+                if (r == grid.GetEndRoom())
+                {
+                    triggerVictory = Instantiate(triggerVictoryPrefab, g.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
                 }
 
                 NetworkObject networkG = g.GetComponent<NetworkObject>();

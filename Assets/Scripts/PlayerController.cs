@@ -23,7 +23,6 @@ public class PlayerController : NetworkBehaviour
     private int countCollectedKeys = 0;
     private int nbKeys = 0;
     public TextMeshProUGUI remainingKeysText;
-    public GameObject door;
     private Rigidbody rb;
     private GameObject camera;
 
@@ -80,11 +79,6 @@ public class PlayerController : NetworkBehaviour
 
             SetCountText();
         }
-
-        if (other.gameObject.CompareTag("TriggerVictory") && countCollectedKeys == nbKeys)
-        {
-            SceneManager.LoadScene("EndPlayerWin");
-        }
     }
 
     void SetCountText()
@@ -95,7 +89,7 @@ public class PlayerController : NetworkBehaviour
 
         if (countCollectedKeys == nbKeys)
         {
-            door.SetActive(false);
+            GridManager.Singleton.TriggerVictory.SetActive(true);
             AudioSource.PlayClipAtPoint(doorSound, transform.position);
             remainingKeysText.text = "Find the exit !";
         }
