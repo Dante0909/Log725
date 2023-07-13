@@ -22,7 +22,8 @@ public class TriggerVictoryManager : NetworkBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("EndPlayerWin");
+            //SceneManager.LoadScene("EndPlayerWin");
+            CustomNetworkManager.Singleton.SceneManager.LoadScene("EndPlayerWin", LoadSceneMode.Single);
         }
     }
 }
