@@ -15,7 +15,7 @@ public class ClientManager : NetworkBehaviour
         {
             // As long as you aren't creating multiple NetworkManager instances, throw an exception.
             // (***the current position of the callstack will stop here***)
-            throw new Exception($"Detected more than one instance of {nameof(ConnectionNotificationManager)}! " +
+            throw new Exception($"Detected more than one instance of {nameof(ClientManager)}! " +
                 $"Do you have more than one component attached to a {nameof(GameObject)}");
         }
         Singleton = this;

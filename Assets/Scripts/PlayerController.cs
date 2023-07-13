@@ -37,7 +37,7 @@ public class PlayerController : NetworkBehaviour
     {
         rb = GetComponent<Rigidbody>();
         camera = this.transform.GetChild(0).gameObject;
-        nbKeys = GridManager.Instance.NumberOfKeys;
+        nbKeys = GridManager.Singleton.NumberOfKeys;
         if(IsHost)
             camera.SetActive(true);
         remainingKeysText = GameObject.FindGameObjectWithTag("KeyUI").GetComponent<TextMeshProUGUI>();

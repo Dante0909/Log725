@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dea38c38a89e494a8cc66145cce64c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridHeight: 15
-  gridWidth: 15
+  gridHeight: 5
+  gridWidth: 5
   sizeBetweenRooms: 19
-  numberOfKeys: 5
+  numberOfKeys: 1
   roomPrefabs:
   - {fileID: 8426952917298744342, guid: 387848a4857e7a844b2d5ebf08b9b04d, type: 3}
   - {fileID: 3962859793194925502, guid: 7f55bbd65f2176b40908bf7c547e0233, type: 3}

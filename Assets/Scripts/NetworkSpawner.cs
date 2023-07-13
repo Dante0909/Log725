@@ -9,17 +9,19 @@ public class NetworkSpawner : NetworkBehaviour
     
     public override void OnNetworkSpawn()
     {
-        SpawnPlayers();
         base.OnNetworkSpawn();
+        SpawnPlayers();
     }
 
     private void SpawnPlayers()
     {
         if (!IsHost) return;
+        GridManager.Singleton.Initialize();
         
         // Vector with the position of the start room
-        Vector3 startPosition = GridManager.Instance.GetGrid().GetStartRoom().GetPosition() * 19 + new Vector3(0, 1.5f,0);
-        Vector3 ghostPosition = new Vector3(Random.Range(0, 15 * 19), 1.0f, Random.Range(4*19, 15 * 19));
+        Vector3 startPosition = GridManager.Singleton.GetGrid().GetStartRoom().GetPosition() * GridManager.Singleton.SizeBetweenRooms + new Vector3(0, 1.5f,0);
+        Vector3 ghostPosition = new Vector3(Random.Range(0, GridManager.Singleton.GridWidth * GridManager.Singleton.SizeBetweenRooms),
+            1.0f, Random.Range(2*GridManager.Singleton.SizeBetweenRooms, GridManager.Singleton.GridHeight * GridManager.Singleton.SizeBetweenRooms));
 
 
         GameObject ghostPlayer = (GameObject)Instantiate(players[1], ghostPosition, transform.rotation);

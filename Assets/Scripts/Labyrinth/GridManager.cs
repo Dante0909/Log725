@@ -18,14 +18,7 @@ public class GridManager : NetworkBehaviour
     private Grid grid;
     private Pathfinding pathfinding;
 
-    public static GridManager Instance
-    {
-        get
-        {
-            if (!instance) instance = FindObjectOfType<GridManager>();
-            return instance;
-        }
-    }
+    public static new GridManager Singleton { get; internal set; }
 
     public Grid GetGrid() => grid;
     public int SizeBetweenRooms => sizeBetweenRooms;
@@ -81,15 +74,24 @@ public class GridManager : NetworkBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        if (IsHost)
+        Debug.Log("Awake");
+        if (Singleton != null)
         {
-            CreateNewGrid();
-            SpawnPhysicalRooms();
-            SpawnCorridors();
+            // As long as you aren't creating multiple NetworkManager instances, throw an exception.
+            // (***the current position of the callstack will stop here***)
+            throw new Exception($"Detected more than one instance of {nameof(GridManager)}! " +
+                                $"Do you have more than one component attached to a {nameof(GameObject)}");
         }
+        Singleton = this;
+    }
+
+    public void Initialize()
+    {
+        CreateNewGrid();
+        SpawnPhysicalRooms();
+        SpawnCorridors();
     }
 
     void SpawnCorridors()

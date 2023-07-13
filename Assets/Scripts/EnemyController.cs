@@ -65,7 +65,8 @@ public class EnemyController : NetworkBehaviour
             playerHealth.DecreaseHealth();
 
             // respawn at random position
-            transform.position = new Vector3(Random.Range(0, 15 * 19), 1.0f, Random.Range(0, 15 * 19));
+            transform.position = new Vector3(Random.Range(0, GridManager.Singleton.SizeBetweenRooms * GridManager.Singleton.GridWidth),
+                1.0f, Random.Range(0, GridManager.Singleton.SizeBetweenRooms * GridManager.Singleton.GridHeight));
         }
     }
 
