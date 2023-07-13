@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181417229671013644}
   - component: {fileID: 1181417229671013645}
+  - component: {fileID: 8076300708739873705}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -55,3 +56,22 @@ MonoBehaviour:
   - {fileID: 63783295164271907, guid: 5c0dba2f68480a44087a2de58338c0bd, type: 3}
   - {fileID: 4790538934984339086, guid: 176f2460beb5c2645bfe55389bf9475a, type: 3}
   corridorPrefab: {fileID: 3103898040847764330, guid: a7996d9e777ba3247bd6828f19fa267d, type: 3}
+--- !u!114 &8076300708739873705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181417229671013646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

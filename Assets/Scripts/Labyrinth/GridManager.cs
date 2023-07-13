@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager : NetworkBehaviour
 {
     [SerializeField] private int gridHeight;
     [SerializeField] private int gridWidth;
@@ -27,6 +28,10 @@ public class GridManager : MonoBehaviour
     }
 
     public Grid GetGrid() => grid;
+    public int SizeBetweenRooms => sizeBetweenRooms;
+    public int GridHeight => gridHeight;
+    public int GridWidth => gridWidth;
+    public int NumberOfKeys => numberOfKeys;
 
     public void CreateNewGrid()
     {
@@ -79,9 +84,12 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateNewGrid();
-        SpawnPhysicalRooms();
-        SpawnCorridors();
+        if (IsHost)
+        {
+            CreateNewGrid();
+            SpawnPhysicalRooms();
+            SpawnCorridors();
+        }
     }
 
     void SpawnCorridors()
