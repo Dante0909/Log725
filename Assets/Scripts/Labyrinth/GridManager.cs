@@ -26,11 +26,12 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public Grid GetGrid() => grid;
 
     public void CreateNewGrid()
     {
         System.Random newRandom = new System.Random(DateTime.Now.Millisecond);
-
+        
         int startX = newRandom.Next(gridWidth);
         int startY = 0;
         int endX = newRandom.Next(gridWidth);
@@ -78,18 +79,9 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CreateNewGrid();
-            SpawnPhysicalRooms();
-            SpawnCorridors();
-        }
+        CreateNewGrid();
+        SpawnPhysicalRooms();
+        SpawnCorridors();
     }
 
     void SpawnCorridors()
