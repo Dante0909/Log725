@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 610110675}
   - component: {fileID: 610110677}
   - component: {fileID: 610110676}
+  - component: {fileID: 8649095174505238862}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -84,6 +85,39 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610110674}
   m_Enabled: 1
+--- !u!114 &8649095174505238862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610110674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1032164548
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1032164549}
   - component: {fileID: 1032164550}
+  - component: {fileID: 2723111309491699343}
   m_Layer: 0
   m_Name: Light Around Player
   m_TagString: Untagged
@@ -128,8 +163,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.8679245, g: 0.65340453, b: 0.30704877, a: 1}
-  m_Intensity: 3
-  m_Range: 3
+  m_Intensity: 5
+  m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -178,6 +213,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2723111309491699343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032164548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &8782928279199653709
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,9 +299,16 @@ MonoBehaviour:
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 500
-  nbKeys: 1
+  lightGems:
+  - {fileID: 2282742065287548191, guid: 769f96a1be42bfe4099d0102e21715f2, type: 3}
+  - {fileID: 6455386285097541050, guid: c6bd98d93ff918e43be37f82f6a6e68e, type: 3}
+  - {fileID: 6629206107896418208, guid: 015a92a1610034c4697d9e0c2ab2bc89, type: 3}
+  - {fileID: 6812453900789682542, guid: f0c02e7a0ee387e4f84304932638ae51, type: 3}
+  lightGemCooldown: 3
   remainingKeysText: {fileID: 0}
-  door: {fileID: 0}
+  keySound: {fileID: 8300000, guid: 120d6f5a3fdc7d2479004eb4cac42186, type: 3}
+  doorSound: {fileID: 8300000, guid: 84364ed871ae47b48a660f172ba48a96, type: 3}
+  lightGemSound: {fileID: 8300000, guid: 81888ea9b6d04ca41b313d700a5d5334, type: 3}
 --- !u!23 &8782928279199653711
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -267,7 +329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e31888243edcafa42a43b370db140be6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -415,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 3
+  hitSound: {fileID: 8300000, guid: 5fdbaba1c487dde4a8c01cf707444992, type: 3}
 --- !u!54 &496227271
 Rigidbody:
   m_ObjectHideFlags: 0

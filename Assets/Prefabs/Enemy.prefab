@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7459688044360512223}
   - component: {fileID: 1747718225427443825}
   - component: {fileID: 887923611295322702}
+  - component: {fileID: 7102919720267113921}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -84,6 +85,39 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961730255244189854}
   m_Enabled: 1
+--- !u!114 &7102919720267113921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961730255244189854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &8727093935645449830
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,8 +134,8 @@ GameObject:
   - component: {fileID: -6397290786913583827}
   - component: {fileID: 1953744235}
   - component: {fileID: 1953744242}
-  - component: {fileID: 2627168132222776128}
-  - component: {fileID: 1148428403981568715}
+  - component: {fileID: -1862164560995734373}
+  - component: {fileID: -2163721511404646679}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -268,7 +302,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2627168132222776128
+--- !u!114 &-1862164560995734373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,7 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8727093935645449830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26942b0260b56e74ab6c3eb47453e5be, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -296,9 +330,9 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
-  Interpolate: 1
+  Interpolate: 0
   SlerpPosition: 0
---- !u!114 &1148428403981568715
+--- !u!114 &-2163721511404646679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

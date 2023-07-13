@@ -14,24 +14,20 @@ public class GridManager : NetworkBehaviour
     [SerializeField] private int numberOfKeys;
     [SerializeField] private GameObject[] roomPrefabs;
     [SerializeField] private GameObject corridorPrefab;
+    [SerializeField] private GameObject triggerVictoryPrefab;
+    [SerializeField] private GameObject triggerVictory;
     private static GridManager instance = null;
     private Grid grid;
     private Pathfinding pathfinding;
 
-    public static GridManager Instance
-    {
-        get
-        {
-            if (!instance) instance = FindObjectOfType<GridManager>();
-            return instance;
-        }
-    }
+    public static new GridManager Singleton { get; internal set; }
 
     public Grid GetGrid() => grid;
     public int SizeBetweenRooms => sizeBetweenRooms;
     public int GridHeight => gridHeight;
     public int GridWidth => gridWidth;
     public int NumberOfKeys => numberOfKeys;
+    public GameObject TriggerVictory => triggerVictory;
 
     public void CreateNewGrid()
     {
@@ -81,15 +77,24 @@ public class GridManager : NetworkBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        if (IsHost)
+        Debug.Log("Awake");
+        if (Singleton != null)
         {
-            CreateNewGrid();
-            SpawnPhysicalRooms();
-            SpawnCorridors();
+            // As long as you aren't creating multiple NetworkManager instances, throw an exception.
+            // (***the current position of the callstack will stop here***)
+            throw new Exception($"Detected more than one instance of {nameof(GridManager)}! " +
+                                $"Do you have more than one component attached to a {nameof(GameObject)}");
         }
+        Singleton = this;
+    }
+
+    public void Initialize()
+    {
+        CreateNewGrid();
+        SpawnPhysicalRooms();
+        SpawnCorridors();
     }
 
     void SpawnCorridors()
@@ -175,6 +180,11 @@ public class GridManager : NetworkBehaviour
                 { 
                     Transform key = RecursiveChildSearch(g.transform, "Key");
                     if (key is not null) Destroy(key.gameObject);
+                }
+
+                else if (r == grid.GetEndRoom())
+                {
+                    triggerVictory = Instantiate(triggerVictoryPrefab, g.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
                 }
 
                 NetworkObject networkG = g.GetComponent<NetworkObject>();

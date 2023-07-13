@@ -51,6 +51,7 @@ public class PauseMenu : MonoBehaviour
         //Time.timeScale = 1f;
         isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        CustomNetworkManager.Singleton.SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
     // Pause the game
@@ -64,6 +65,7 @@ public class PauseMenu : MonoBehaviour
     // Load the main menu
     public void MainMenuButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+        CustomNetworkManager.Singleton.SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
