@@ -21,7 +21,7 @@ public class EnemyController : NetworkBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
-        //camera = this.GetComponentInChildren<Camera>().gameObject;
+        print("TEST");
         if(!IsHost)
             camera.SetActive(true);
         ConnectionNotificationManager.Singleton.OnClientConnectionNotification += OnClientConnected;

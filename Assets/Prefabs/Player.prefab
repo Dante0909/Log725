@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 610110675}
   - component: {fileID: 610110677}
   - component: {fileID: 610110676}
-  - component: {fileID: 5503638058501119434}
+  - component: {fileID: 8649095174505238862}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -85,7 +85,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610110674}
   m_Enabled: 1
---- !u!114 &5503638058501119434
+--- !u!114 &8649095174505238862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,8 +163,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.8679245, g: 0.65340453, b: 0.30704877, a: 1}
-  m_Intensity: 3
-  m_Range: 3
+  m_Intensity: 5
+  m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -307,7 +307,6 @@ MonoBehaviour:
   - {fileID: 6812453900789682542, guid: f0c02e7a0ee387e4f84304932638ae51, type: 3}
   lightGemCooldown: 3
   remainingKeysText: {fileID: 0}
-  door: {fileID: 0}
   keySound: {fileID: 8300000, guid: 120d6f5a3fdc7d2479004eb4cac42186, type: 3}
   doorSound: {fileID: 8300000, guid: 84364ed871ae47b48a660f172ba48a96, type: 3}
   lightGemSound: {fileID: 8300000, guid: 81888ea9b6d04ca41b313d700a5d5334, type: 3}
