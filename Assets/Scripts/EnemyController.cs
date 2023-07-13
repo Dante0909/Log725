@@ -42,9 +42,9 @@ public class EnemyController : NetworkBehaviour
         //Debug.Log("\nIsClientConnected : " + ClientManager.Singleton.IsClientConnected.Value + " IsHost : " + IsHost);
         if (!ClientManager.Singleton.IsClientConnected.Value && IsHost)
         {
-
-            Vector3 mv = aiControllerState?.GetMoveVec() ?? Vector3.zero;
-            moveVec = mv;
+            moveVec = (playerTransform.position - transform.position).normalized;
+            //Vector3 mv = aiControllerState?.GetMoveVec() ?? Vector3.zero;
+            //moveVec = mv;
             Debug.Log("\nmoveVec : " + moveVec);
         }
         
