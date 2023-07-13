@@ -61,11 +61,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2473834764018720329, guid: d199e3badf494934f9b163b99b698294, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4812647817025362958, guid: d199e3badf494934f9b163b99b698294, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6425293928641194661, guid: d199e3badf494934f9b163b99b698294, type: 3}
       propertyPath: m_RootOrder

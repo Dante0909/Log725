@@ -182,7 +182,7 @@ public class GridManager : NetworkBehaviour
                     if (key is not null) Destroy(key.gameObject);
                 }
 
-                if (r == grid.GetEndRoom())
+                else if (r == grid.GetEndRoom())
                 {
                     triggerVictory = Instantiate(triggerVictoryPrefab, g.transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
                 }
