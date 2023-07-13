@@ -20,11 +20,16 @@ public class PlayerController : NetworkBehaviour
     public TextMeshProUGUI remainingKeysText;
     public GameObject door;
     private Rigidbody rb;
+    private GameObject camera;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        camera = this.transform.GetChild(0).gameObject;
+        if(IsHost)
+            camera.SetActive(true);
+        remainingKeysText = GameObject.FindGameObjectWithTag("KeyUI").GetComponent<TextMeshProUGUI>();
         SetCountText();
     }
 
