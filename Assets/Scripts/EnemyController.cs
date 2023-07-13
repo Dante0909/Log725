@@ -23,6 +23,8 @@ public class EnemyController : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
         if(!IsHost)
             camera.SetActive(true);
+        else
+            camera.SetActive(false);
         ConnectionNotificationManager.Singleton.OnClientConnectionNotification += OnClientConnected;
     }
 
