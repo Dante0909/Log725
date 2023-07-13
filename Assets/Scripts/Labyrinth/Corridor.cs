@@ -31,4 +31,9 @@ public class Corridor
     {
         return roomB;
     }
+
+    public Vector3 GetPosition()
+    {
+        return new Vector3((roomA.X + roomB.X) * 0.5f, 0, (roomA.Y + roomB.Y) * 0.5f);
+    }
 }

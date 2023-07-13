@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using UnityEngine;
 
@@ -46,6 +47,7 @@ public class Room
         position = new Vector3(X, 0, Y);
     }
 
+    //Neighbours represent adjacent rooms, they are not necessarily connected with a corridor
     public void SetNeighbours(Grid g)
     {
         Room r = g.GetRoom(X - 1, Y);
@@ -70,6 +72,11 @@ public class Room
     public Dictionary<Cardinal, Room> GetNeighbours()
     {
         return neighbours;
+    }
+
+    public Dictionary<Cardinal, Corridor> GetCorridors()
+    {
+        return corridors;
     }
     public bool ContainsNeighbours()
     {
