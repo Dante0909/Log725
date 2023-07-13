@@ -19,7 +19,7 @@ public class NetworkSpawner : NetworkBehaviour
         GridManager.Singleton.Initialize();
         
         // Vector with the position of the start room
-        Vector3 startPosition = GridManager.Singleton.GetGrid().GetStartRoom().GetPosition() * GridManager.Singleton.SizeBetweenRooms;
+        Vector3 startPosition = GridManager.Singleton.GetGrid().GetStartRoom().GetPosition() * GridManager.Singleton.SizeBetweenRooms + new Vector3(0,0.5f,0);
         Vector3 ghostPosition = new Vector3(Random.Range(0, GridManager.Singleton.GridWidth * GridManager.Singleton.SizeBetweenRooms),
             1.0f, Random.Range(2*GridManager.Singleton.SizeBetweenRooms, GridManager.Singleton.GridHeight * GridManager.Singleton.SizeBetweenRooms));
 
