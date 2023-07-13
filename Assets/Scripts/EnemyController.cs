@@ -64,8 +64,8 @@ public class EnemyController : NetworkBehaviour
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             playerHealth.DecreaseHealth();
 
-            //to generate random
-            transform.position = Vector3.zero;
+            // respawn at random position
+            transform.position = new Vector3(Random.Range(0, 15 * 19), 1.0f, Random.Range(0, 15 * 19));
         }
     }
 

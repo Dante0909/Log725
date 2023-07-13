@@ -21,7 +21,7 @@ public class PlayerController : NetworkBehaviour
 
     // Keys collected
     private int countCollectedKeys = 0;
-    public int nbKeys = 0;
+    private int nbKeys = 0;
     public TextMeshProUGUI remainingKeysText;
     public GameObject door;
     private Rigidbody rb;
@@ -37,6 +37,7 @@ public class PlayerController : NetworkBehaviour
     {
         rb = GetComponent<Rigidbody>();
         camera = this.transform.GetChild(0).gameObject;
+        nbKeys = GridManager.Instance.NumberOfKeys;
         if(IsHost)
             camera.SetActive(true);
         remainingKeysText = GameObject.FindGameObjectWithTag("KeyUI").GetComponent<TextMeshProUGUI>();
@@ -110,7 +111,12 @@ public class PlayerController : NetworkBehaviour
         int randomIndex = Random.Range(0, lightGems.Length);
         GameObject lightGem = lightGems[randomIndex];
 
-        Instantiate(lightGem, lightGemPos, Quaternion.identity);
+        
+        GameObject gem = Instantiate(lightGem, lightGemPos, Quaternion.identity);
+        NetworkObject gemNetworkObject = gem.GetComponent<NetworkObject>();
+        gem.SetActive(true);
+        gemNetworkObject.Spawn();
+
         AudioSource.PlayClipAtPoint(lightGemSound, transform.position);
     }
 }
