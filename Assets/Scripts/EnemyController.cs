@@ -51,17 +51,11 @@ public class EnemyController : NetworkBehaviour
         //Debug.Log("\nClient connected : " + ClientManager.Singleton.IsClientConnected.Value);
         
         if (!IsOwner || !ClientManager.Singleton.IsClientConnected.Value) return;
-        Vector2 inputVec = input.Get<Vector2>();
-        MoveServerRpc(inputVec.x, 0, inputVec.y);
-        //Debug.Log("\nmoveVec : " + moveVec);
-    }
-
-    [ServerRpc]
-    private void MoveServerRpc(float inputx, float inputy, float inputz)
-    {
         Debug.Log("\nGot Here");
+        Vector2 inputVec = input.Get<Vector2>();
 
-        moveVec = new Vector3(inputx, inputy, inputz);
+        moveVec = new Vector3(inputVec.x, 0, inputVec.y);
+        //Debug.Log("\nmoveVec : " + moveVec);
     }
 
     private void OnTriggerEnter(Collider collision)

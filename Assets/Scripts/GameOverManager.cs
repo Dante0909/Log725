@@ -9,7 +9,6 @@ public class GameOverManager : MonoBehaviour
     public void BackToMainMenu()
     {
         // Load the main menu scene
-        //SceneManager.LoadScene("MainMenu");
-        CustomNetworkManager.Singleton.SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenu");
     }
 }

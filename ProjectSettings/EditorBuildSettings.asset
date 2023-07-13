@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 2a31af8f24d799a4990114b3b64aeb6e
   - enabled: 0
@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/RoomTemplate.unity
     guid: 4f1f9244ac3e4934f9d7420d298609e9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EndGhostWin.unity
     guid: 0848d7c1994c34e4c86fc2da079db9b3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EndPlayerWin.unity
     guid: 241e1939fd7642f4e9f9402ce9297b6f
   - enabled: 0
