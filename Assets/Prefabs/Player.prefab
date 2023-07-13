@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1032164549}
   - component: {fileID: 1032164550}
+  - component: {fileID: 2723111309491699343}
   m_Layer: 0
   m_Name: Light Around Player
   m_TagString: Untagged
@@ -178,6 +179,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2723111309491699343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032164548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &8782928279199653709
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,12 +266,10 @@ MonoBehaviour:
     m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 500
   lightGems:
-  - {fileID: 1011319553682498, guid: 8ad137f6808375f4e885d60451f0c4fc, type: 3}
-  - {fileID: 1288543304402976, guid: 5f66f0f2ec3592c4bb1a9626364fb9c3, type: 3}
-  - {fileID: 1591381487688778, guid: 2832fc268e26c1449b4a6371354d06f5, type: 3}
-  - {fileID: 1305964118088936, guid: ffb606a81585e3a4090cc0f8dedd8f47, type: 3}
-  - {fileID: 1903079753970086, guid: d43f3f63132c0214d87d74f89bd7bcd3, type: 3}
-  - {fileID: 1150642482621776, guid: 3b7897b21791f9e46a757b6b21d0213f, type: 3}
+  - {fileID: 2282742065287548191, guid: 769f96a1be42bfe4099d0102e21715f2, type: 3}
+  - {fileID: 6455386285097541050, guid: c6bd98d93ff918e43be37f82f6a6e68e, type: 3}
+  - {fileID: 6629206107896418208, guid: 015a92a1610034c4697d9e0c2ab2bc89, type: 3}
+  - {fileID: 6812453900789682542, guid: f0c02e7a0ee387e4f84304932638ae51, type: 3}
   lightGemCooldown: 3
   nbKeys: 0
   remainingKeysText: {fileID: 0}
