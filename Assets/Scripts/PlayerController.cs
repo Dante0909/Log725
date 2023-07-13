@@ -13,6 +13,8 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float rotationSpeed;
 
     // LightGems
     public GameObject[] lightGems;
@@ -32,12 +34,16 @@ public class PlayerController : NetworkBehaviour
     public AudioClip doorSound;
     public AudioClip lightGemSound;
 
+    //Animation
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         camera = this.transform.GetChild(0).gameObject;
         nbKeys = GridManager.Singleton.NumberOfKeys;
+        animator = GetComponent<Animator>();
         if(IsHost)
             camera.SetActive(true);
         remainingKeysText = GameObject.FindGameObjectWithTag("KeyUI").GetComponent<TextMeshProUGUI>();
@@ -47,12 +53,23 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > lightGemCooldownTimer)
         {
             lightGemCooldownTimer = Time.time + lightGemCooldown;
             OnCreateLightGem();
         }
 
+        camera.transform.rotation=Quaternion.Euler(Vector3.zero);
+
+        if(moveVec != Vector3.zero){
+            animator.SetFloat("speed", 2);
+            Quaternion toRotate = Quaternion.LookRotation(moveVec, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.fixedDeltaTime);
+        } else {
+            animator.SetFloat("speed", 0);
+        }
     }
 
     private void FixedUpdate()

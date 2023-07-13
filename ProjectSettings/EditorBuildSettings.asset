@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SceneMax.unity
     guid: a44aba6dfe59682448aa443288c2e4a0
   - enabled: 0
@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/KeyTestScene.unity
     guid: 1cf137dba0f663343926001ef2dead7d
+  - enabled: 1
+    path: Assets/Scenes/TestCharactersDQ.unity
+    guid: 83bfd211938996745b115c83d30740b7
   m_configObjects: {}
