@@ -25,7 +25,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            SceneManager.LoadScene("EndGhostWin");
+            //SceneManager.LoadScene("EndGhostWin");
+            CustomNetworkManager.Singleton.SceneManager.LoadScene("EndGhostWin", LoadSceneMode.Single);
         }
         else
         {
