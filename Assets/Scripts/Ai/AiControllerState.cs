@@ -14,11 +14,13 @@ public class AiControllerState : MonoBehaviour
 
     public AiStateChase chaseState;
 
-    public Grid grid;
+    private Room[,] rooms;
+    public Room[,] Rooms => rooms;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        rooms = GridManager.Singleton.GetGrid().GetRooms();
         
         roamState = new AiStateRoam(this);
         chaseState = new AiStateChase(this);
@@ -28,14 +30,14 @@ public class AiControllerState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentState.Update();
+        currentState?.Update();
     }
 
     public void ChangeState(AiState newState)
     {
         if (newState is not null && newState != currentState)
         {
-            currentState.Exit();
+            currentState?.Exit();
             currentState = newState;
             currentState.Enter();
         }
@@ -43,6 +45,6 @@ public class AiControllerState : MonoBehaviour
 
     public Vector3 GetMoveVec()
     {
-        return Vector3.zero;
+        return (currentState.Destination - EnemyPos).normalized;
     }
 }

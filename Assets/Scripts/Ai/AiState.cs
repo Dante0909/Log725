@@ -5,11 +5,14 @@ using UnityEngine;
 public abstract class AiState
 {
     protected AiControllerState cs;
-    protected Vector3 moveVec;
+    
+    protected Vector3 destination;
+    public Vector3 Destination => destination;
     public AiState(AiControllerState cs)
     {
         this.cs = cs;
     }
+
     protected virtual void OnEnter()
     {
 
@@ -38,5 +41,6 @@ public abstract class AiState
     {
 
     }
+
     
 }

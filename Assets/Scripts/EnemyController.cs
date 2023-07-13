@@ -14,10 +14,12 @@ public class EnemyController : NetworkBehaviour
     private Transform playerTransform;
     private Rigidbody rb;
     private GameObject camera;
+    private AiControllerState aiControllerState;
 
     // Start is called before the first frame update
     void Start()
     {
+        aiControllerState = GetComponent<AiControllerState>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         camera = this.transform.GetChild(0).gameObject;
@@ -36,7 +38,8 @@ public class EnemyController : NetworkBehaviour
         Debug.Log("\nIsClientConnected : " + ClientManager.Singleton.IsClientConnected.Value + " IsHost : " + IsHost);
         if (!ClientManager.Singleton.IsClientConnected.Value && IsHost)
         {
-            moveVec = (playerTransform.position - transform.position).normalized;
+            Vector3 mv = aiControllerState?.GetMoveVec() ?? Vector3.zero;
+            moveVec = mv;
             Debug.Log("\nmoveVec : " + moveVec);
         }
         
