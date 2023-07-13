@@ -27,6 +27,11 @@ public class PlayerController : NetworkBehaviour
     private Rigidbody rb;
     private GameObject camera;
 
+    // Sounds
+    public AudioClip keySound;
+    public AudioClip doorSound;
+    public AudioClip lightGemSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,11 +89,13 @@ public class PlayerController : NetworkBehaviour
     void SetCountText()
     {
         int remainingKeys = nbKeys - countCollectedKeys;
+        AudioSource.PlayClipAtPoint(keySound, transform.position);
         remainingKeysText.text = "Remaining keys: " + remainingKeys.ToString();
 
         if (countCollectedKeys == nbKeys)
         {
             door.SetActive(false);
+            AudioSource.PlayClipAtPoint(doorSound, transform.position);
             remainingKeysText.text = "Find the exit !";
         }
     }
@@ -104,5 +111,6 @@ public class PlayerController : NetworkBehaviour
         GameObject lightGem = lightGems[randomIndex];
 
         Instantiate(lightGem, lightGemPos, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(lightGemSound, transform.position);
     }
 }

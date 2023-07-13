@@ -255,6 +255,9 @@ MonoBehaviour:
   nbKeys: 0
   remainingKeysText: {fileID: 0}
   door: {fileID: 0}
+  keySound: {fileID: 8300000, guid: 120d6f5a3fdc7d2479004eb4cac42186, type: 3}
+  doorSound: {fileID: 8300000, guid: 84364ed871ae47b48a660f172ba48a96, type: 3}
+  lightGemSound: {fileID: 8300000, guid: 81888ea9b6d04ca41b313d700a5d5334, type: 3}
 --- !u!23 &8782928279199653711
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -423,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 3
+  hitSound: {fileID: 8300000, guid: 5fdbaba1c487dde4a8c01cf707444992, type: 3}
 --- !u!54 &496227271
 Rigidbody:
   m_ObjectHideFlags: 0

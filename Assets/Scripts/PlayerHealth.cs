@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     public static event Action<int> HealthChanged =  delegate{};
 
     public int playerHealth;
+    public AudioClip hitSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,10 @@ public class PlayerHealth : MonoBehaviour
         if (playerHealth <= 0)
         {
             SceneManager.LoadScene("EndGhostWin");
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
         }
     }
 
