@@ -41,7 +41,6 @@ public class PlayerController : NetworkBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        print("TEST");
         nbKeys = GridManager.Singleton.NumberOfKeys;
         animator = GetComponent<Animator>();
         if(IsHost)

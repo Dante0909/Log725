@@ -21,7 +21,6 @@ public class EnemyController : NetworkBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
-        print("TEST");
         if(!IsHost)
             camera.SetActive(true);
         ConnectionNotificationManager.Singleton.OnClientConnectionNotification += OnClientConnected;
@@ -30,6 +29,7 @@ public class EnemyController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        camera.transform.position = transform.position + new Vector3(0, 7f, -3.5f);
     }
 
     private void FixedUpdate()
