@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     // Build number of scene to start when button is clicked
-    public int gameStartScene;
+    public string gameStartScene;
 
     public void StartGame()
     {
-        SceneManager.LoadScene(gameStartScene);
+        CustomNetworkManager.Singleton.StartHost();
+        CustomNetworkManager.Singleton.SceneManager.LoadScene(gameStartScene, LoadSceneMode.Single);
+    }
+
+    public void JoinGame()
+    {
+        CustomNetworkManager.Singleton.StartClient();
+        CustomNetworkManager.Singleton.SceneManager.LoadScene(gameStartScene, LoadSceneMode.Single);
     }
 
     public void QuitGame()
