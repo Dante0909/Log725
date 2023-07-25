@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
     public int playerHealth;
     public AudioClip hitSound;
+    public AudioClip healSound;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,17 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        }
+    }
+
+    public void IncreaseHealth()
+    {
+        AudioSource.PlayClipAtPoint(healSound, transform.position);
+
+        if (playerHealth < 3)
+        {
+            playerHealth++;
+            HealthChanged?.Invoke(playerHealth);
         }
     }
 
