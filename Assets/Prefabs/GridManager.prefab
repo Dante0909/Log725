@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 63783295164271907, guid: 5c0dba2f68480a44087a2de58338c0bd, type: 3}
   - {fileID: 4790538934984339086, guid: 176f2460beb5c2645bfe55389bf9475a, type: 3}
   corridorPrefab: {fileID: 3103898040847764330, guid: a7996d9e777ba3247bd6828f19fa267d, type: 3}
+  chestPrefab: {fileID: 956429411016426271, guid: cb823adfe673a674e8fd2c41be891ad0, type: 3}
   triggerVictoryPrefab: {fileID: 4077347541843738751, guid: 9328c2216342e8442b328dbca2c1c046, type: 3}
   triggerVictory: {fileID: 0}
 --- !u!114 &8076300708739873705
