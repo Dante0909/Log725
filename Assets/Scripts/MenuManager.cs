@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,24 @@ public class MenuManager : MonoBehaviour
     // Build number of scene to start when button is clicked
     public string gameStartScene;
 
+    private void Awake()
+    {
+        if (CustomNetworkManager.Singleton != null)
+        {
+            Destroy(CustomNetworkManager.Singleton.gameObject);
+        }
+    }
+
     public void StartGame()
     {
-        CustomNetworkManager.Singleton.StartHost();
-        CustomNetworkManager.Singleton.SceneManager.LoadScene(gameStartScene, LoadSceneMode.Single);
+        GameManager.IsHost = true;
+        SceneManager.LoadScene(gameStartScene, LoadSceneMode.Single);
     }
 
     public void JoinGame()
     {
-        CustomNetworkManager.Singleton.StartClient();
-        CustomNetworkManager.Singleton.SceneManager.LoadScene(gameStartScene, LoadSceneMode.Single);
+        GameManager.IsHost = false;
+        SceneManager.LoadScene(gameStartScene, LoadSceneMode.Single);
     }
 
     public void QuitGame()
