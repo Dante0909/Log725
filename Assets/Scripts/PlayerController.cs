@@ -98,6 +98,14 @@ public class PlayerController : NetworkBehaviour
 
             SetCountText();
         }
+
+        if (other.gameObject.CompareTag("Chest"))
+        {
+            other.gameObject.SetActive(false);
+
+            PlayerHealth playerHealth = this.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.IncreaseHealth();
+        }
     }
 
     void SetCountText()

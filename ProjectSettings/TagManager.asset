@@ -7,6 +7,7 @@ TagManager:
   - Key
   - TriggerVictory
   - KeyUI
+  - Chest
   layers:
   - Default
   - TransparentFX
