@@ -20,6 +20,7 @@ public class Pathfinding
 
     public bool VerifyInitialGrid()
     {
+        var deadEnds = new List<Room>();
         foreach (Room r in grid.GetRooms())
         {
             if (r is null) continue;
@@ -28,8 +29,20 @@ public class Pathfinding
                 List<Room> path = FindPathToStart(r);
                 if (path is null) return false;
             }
+            if (r.GetNeighbours().Count == 1 && r != grid.GetStartRoom() && r != grid.GetEndRoom()) deadEnds.Add(r);
         }
 
+        //one key room, one chess room
+        if (deadEnds.Count < 2) return false;
+
+        int keyIndex = Random.Range(0, deadEnds.Count);
+        deadEnds[keyIndex].ContainsKey = true;
+        int chestIndex = keyIndex;
+        while(chestIndex == keyIndex)
+        {
+            chestIndex = Random.Range(0, deadEnds.Count);
+        }
+        deadEnds[chestIndex].ContainsChest = true;
         return true;
     }
 

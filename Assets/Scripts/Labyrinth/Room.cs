@@ -13,6 +13,7 @@ public class Room
     //default to 0, is set when calculating path
     public int DistanceFromStart { get; set; } = 0;
     public bool ContainsKey { get; set; } = false;
+    public bool ContainsChest { get; set; } = false;
 
     public int X { get; private set; }
     public int Y { get; private set; }
