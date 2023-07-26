@@ -106,7 +106,7 @@ public class GridManager : NetworkBehaviour
             if (c.GetRoomA().Y != c.GetRoomB().Y) g.transform.Rotate(Vector3.up, 90);
             NetworkObject networkG = g.GetComponent<NetworkObject>();
             g.SetActive(true);
-            networkG.Spawn();
+            networkG.Spawn(true);
         }
     }
 
@@ -189,7 +189,7 @@ public class GridManager : NetworkBehaviour
 
                 NetworkObject networkG = g.GetComponent<NetworkObject>();
                 g.SetActive(true);
-                networkG.Spawn();
+                networkG.Spawn(true);
             }
         }
     }
