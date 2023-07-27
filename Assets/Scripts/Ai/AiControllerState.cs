@@ -45,6 +45,7 @@ public class AiControllerState : MonoBehaviour
 
     public Vector3 GetMoveVec()
     {
+        Debug.Log(currentState);
         return (currentState.Destination - EnemyPos).normalized;
     }
 }

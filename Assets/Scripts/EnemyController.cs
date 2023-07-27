@@ -56,11 +56,11 @@ public class EnemyController : NetworkBehaviour
         //Debug.Log("\nIsClientConnected : " + ClientManager.Singleton.IsClientConnected.Value + " IsHost : " + IsHost);
         if (!ClientManager.Singleton.IsClientConnected.Value && IsHost)
         {
-            moveVec = (playerTransform.position - transform.position).normalized;
+            //moveVec = (playerTransform.position - transform.position).normalized;
 
-            //Vector3 mv = aiControllerState?.GetMoveVec() ?? Vector3.zero;
-            //moveVec = mv;
-            Debug.Log("\nmoveVec : " + moveVec);
+            Vector3 mv = aiControllerState?.GetMoveVec() ?? Vector3.zero;
+            moveVec = mv;
+            //Debug.Log("\nmoveVec : " + moveVec);
         }
         
         if(Vector3.Distance(playerTransform.position, transform.position) > 2f * GridManager.Singleton.SizeBetweenRooms){

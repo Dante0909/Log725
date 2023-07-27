@@ -384,6 +384,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 25901200661331521, guid: aaf0bae1b4fe202469a91f418e19fa04, type: 3}
   m_PrefabInstance: {fileID: 3370824276922098309}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1593131729337227961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358444880477609156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678812b35e69b2c4f8bef37c550421de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2405990343376820199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c238c5dc6a14748b68c977596b48de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 220
+  moveSpeed: 180
   rotationSpeed: 300
   playerTransform: {fileID: 0}
   camera: {fileID: 3370824276800563143}

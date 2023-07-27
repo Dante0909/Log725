@@ -22,13 +22,14 @@ public class AiStateRoam : AiState
     protected override void OnUpdate()
     {
         base.OnUpdate();
-        if (Vector3.Distance(cs.PlayerPos, cs.EnemyPos) < 2 * GridManager.Singleton.SizeBetweenRooms)
+        if (Vector3.Distance(cs.PlayerPos, cs.EnemyPos) < 0.5f * GridManager.Singleton.SizeBetweenRooms)
         {
             cs.ChangeState(cs.chaseState);
         }
         else
         {
-            if (cs.EnemyPos == destination)
+            //Debug.Log("Destination : " + destination + "\nPosition : " + cs.EnemyPos);
+            if (Vector3.Distance(cs.EnemyPos, destination) < 1f)
             {
                 destination = FindRandomPosition();
             }
@@ -59,6 +60,6 @@ public class AiStateRoam : AiState
             r = cs.Rooms[x, z];
         } while (r is null);
         
-        return r.GetPosition() * GridManager.Singleton.SizeBetweenRooms;
+        return (r.GetPosition() * GridManager.Singleton.SizeBetweenRooms) + Vector3.up;
     }
 }

@@ -18,7 +18,7 @@ public class AiStateChase : AiState
     protected override void OnUpdate()
     {
         base.OnUpdate();
-        if(Vector3.Distance(cs.PlayerPos, cs.EnemyPos) > 2f * GridManager.Singleton.SizeBetweenRooms)
+        if(Vector3.Distance(cs.PlayerPos, cs.EnemyPos) > 0.5f * GridManager.Singleton.SizeBetweenRooms)
             cs.ChangeState(cs.roamState);
         else
         {
