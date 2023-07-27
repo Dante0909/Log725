@@ -14,6 +14,7 @@ public class GridManager : NetworkBehaviour
     [SerializeField] private int numberOfKeys;
     [SerializeField] private GameObject[] roomPrefabs;
     [SerializeField] private GameObject corridorPrefab;
+    [SerializeField] private GameObject chestPrefab;
     [SerializeField] private GameObject triggerVictoryPrefab;
     [SerializeField] private GameObject triggerVictory;
     private static GridManager instance = null;
@@ -44,37 +45,13 @@ public class GridManager : NetworkBehaviour
 
         do
         {
-            do
-            {
-                grid = new Grid(gridWidth, gridHeight, startX, startY, endX, endY);
-                pathfinding = new Pathfinding(grid);
-                good = pathfinding.VerifyInitialGrid();
-                safe++;
+            grid = new Grid(gridWidth, gridHeight, startX, startY, endX, endY);
+            pathfinding = new Pathfinding(grid);
+            good = pathfinding.VerifyInitialGrid();
+            safe++;
 
-            } while (good == false && safe < 1000);
+        } while (good == false && safe < 1000);
 
-            //separate do while to avoid doing this step every time
-
-            foreach (Room room in grid.GetRooms())
-            {
-                if (room is not null && room.DistanceFromStart != 0)
-                {
-                    deadEnds.Add(room);
-                }
-
-            }
-
-        } while (numberOfKeys >= deadEnds.Count);
-
-        deadEnds = deadEnds.OrderBy(x => x.DistanceFromStart).ToList();
-        int average = Mathf.FloorToInt((float)deadEnds.Count / (float)numberOfKeys);
-
-        for (int i = 0; i < numberOfKeys; ++i)
-        {
-            int index = i * average;
-            if (index >= deadEnds.Count) throw new Exception("Dead end index problem");
-            deadEnds[i * average].ContainsKey = true;
-        }
     }
 
     private void Awake()
@@ -88,6 +65,7 @@ public class GridManager : NetworkBehaviour
                                 $"Do you have more than one component attached to a {nameof(GameObject)}");
         }
         Singleton = this;
+        numberOfKeys = 1;
     }
 
     public void Initialize()
@@ -181,6 +159,10 @@ public class GridManager : NetworkBehaviour
                     Transform key = RecursiveChildSearch(g.transform, "Key");
                     if (key is not null) Destroy(key.gameObject);
                 }
+                if (r.ContainsChest)
+                {
+                    var chest = Instantiate(chestPrefab, g.transform);
+                }
 
                 if (r == grid.GetEndRoom())
                 {
@@ -210,6 +192,10 @@ public class GridManager : NetworkBehaviour
 
         return null;
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) Initialize();
+    }
     void OnDrawGizmos()
     {
         if (grid is not null)
@@ -229,6 +215,10 @@ public class GridManager : NetworkBehaviour
                     else if (r.ContainsKey)
                     {
                         Gizmos.color = Color.blue;
+                    }
+                    else if (r.ContainsChest)
+                    {
+                        Gizmos.color = Color.yellow;
                     }
                     else
                     {

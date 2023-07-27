@@ -300,6 +300,7 @@ MonoBehaviour:
     m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 500
   rotationSpeed: 30
+  camera: {fileID: 0}
   lightGems:
   - {fileID: 2282742065287548191, guid: 769f96a1be42bfe4099d0102e21715f2, type: 3}
   - {fileID: 6455386285097541050, guid: c6bd98d93ff918e43be37f82f6a6e68e, type: 3}
@@ -479,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 3
   hitSound: {fileID: 8300000, guid: 5fdbaba1c487dde4a8c01cf707444992, type: 3}
+  healSound: {fileID: 8300000, guid: a1a4e198fd3113047a92f5948391e8ff, type: 3}
 --- !u!54 &496227271
 Rigidbody:
   m_ObjectHideFlags: 0
