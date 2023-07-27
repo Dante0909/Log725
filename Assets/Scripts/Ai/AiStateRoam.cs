@@ -51,10 +51,10 @@ public class AiStateRoam : AiState
         
         do
         {
-            x = Random.Range(playerX - 2 , playerX + 2);
+            x = Random.Range(playerX - 1 , playerX + 1);
             x = Mathf.Clamp(x, 0, GridManager.Singleton.GridWidth - 1);
 
-            z = Random.Range(playerZ - 2, playerZ + 2);
+            z = Random.Range(playerZ - 1, playerZ + 1);
             z = Mathf.Clamp(z, 0, GridManager.Singleton.GridHeight - 1);
 
             r = cs.Rooms[x, z];
