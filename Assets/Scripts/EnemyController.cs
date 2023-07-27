@@ -54,11 +54,11 @@ public class EnemyController : NetworkBehaviour
             Debug.Log("\nmoveVec : " + moveVec);
         }
         
-        if(Vector3.Distance(playerTransform.position, transform.position) > 2f * GridManager.Singleton.SizeBetweenRooms){
-            animator.SetBool("FoundPlayer", false);
+        if(Vector3.Distance(playerTransform.position, transform.position) > 5f/*2f * GridManager.Singleton.SizeBetweenRoom*/){
+            HandleAnimationServerRpc(0.0f);
         } else {
             Debug.Log("found player");
-            animator.SetBool("FoundPlayer", true);
+            HandleAnimationServerRpc(1.0f);
         }
 
         if(moveVec != Vector3.zero){
@@ -90,6 +90,12 @@ public class EnemyController : NetworkBehaviour
         Debug.Log("\nGot Here");
 
         moveVec = new Vector3(inputx, inputy, inputz);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void HandleAnimationServerRpc(float speed){
+        if(animator != null)
+            animator.SetFloat("Speed", speed);
     }
 
     private void OnTriggerEnter(Collider collision)

@@ -45,7 +45,7 @@ public class PlayerController : NetworkBehaviour
         remainingKeysText.OnValueChanged += OnRemainingKeysTextChanged;
         rb = GetComponent<Rigidbody>();
         nbKeys = GridManager.Singleton.NumberOfKeys;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         if(IsHost)
             camera.SetActive(true);
         else
@@ -74,13 +74,20 @@ public class PlayerController : NetworkBehaviour
         camera.transform.position = transform.position + new Vector3(0, 7f, -3.5f);
 
         if(moveVec != Vector3.zero){
-            animator.SetFloat("Speed", 1);
+            HandleAnimationClientRpc(1.0f);
             Quaternion toRotate = Quaternion.LookRotation(moveVec, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
         } else {
-            animator.SetFloat("Speed", 0);
+            HandleAnimationClientRpc(0f);
         }
+    }
+
+    
+    [ClientRpc]
+    private void HandleAnimationClientRpc(float speed){
+        if(animator != null)
+            animator.SetFloat("Speed", speed);
     }
 
     private void FixedUpdate()
