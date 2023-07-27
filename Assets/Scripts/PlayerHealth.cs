@@ -46,7 +46,6 @@ public class PlayerHealth : NetworkBehaviour
         if (playerHealth.Value < 3)
         {
             playerHealth.Value++;
-            HealthChanged?.Invoke(playerHealth.Value);
         }
     }
 
