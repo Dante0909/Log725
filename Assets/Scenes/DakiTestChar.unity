@@ -1024,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 4001770465544027416, guid: 81d155a98c87535408e2493577ab8124, type: 3}
       propertyPath: players.Array.data[1]
       value: 
-      objectReference: {fileID: 8727093935645449830, guid: b379dc9bc3951ee4aab667904b3aa32f, type: 3}
+      objectReference: {fileID: 3370824278316362864, guid: b98fbe7c38cca9b4f917b193152c8df6, type: 3}
     - target: {fileID: 4001770465544027417, guid: 81d155a98c87535408e2493577ab8124, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 719308919

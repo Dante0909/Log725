@@ -59,8 +59,6 @@ public class PlayerController : NetworkBehaviour
         {
             remainingKeysTextMeshPro.text = remainingKeysText.Value.Value;
         }
-        
-
     }
 
     // Update is called once per frame
@@ -76,12 +74,12 @@ public class PlayerController : NetworkBehaviour
         camera.transform.position = transform.position + new Vector3(0, 7f, -3.5f);
 
         if(moveVec != Vector3.zero){
-            animator.SetFloat("speed", 2);
+            animator.SetFloat("Speed", 1);
             Quaternion toRotate = Quaternion.LookRotation(moveVec, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
         } else {
-            animator.SetFloat("speed", 0);
+            animator.SetFloat("Speed", 0);
         }
     }
 

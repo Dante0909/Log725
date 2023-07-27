@@ -351,7 +351,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 6f646f932413e554ab681835d70d1367, type: 2}
     - target: {fileID: 4957605393579145647, guid: 4f46098734d87e24490aef9267915ad2, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f46098734d87e24490aef9267915ad2, type: 3}
@@ -498,8 +498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b59a6188fca444daa5d32cc72d236e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 3
+  playerHealth:
+    m_InternalValue: 0
   hitSound: {fileID: 8300000, guid: 5fdbaba1c487dde4a8c01cf707444992, type: 3}
+  healSound: {fileID: 0}
 --- !u!114 &9095520960186551842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,7 +517,7 @@ MonoBehaviour:
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 300
-  rotationSpeed: 100
+  rotationSpeed: 150
   camera: {fileID: 1800003146660863182}
   lightGems:
   - {fileID: 6629206107896418208, guid: 015a92a1610034c4697d9e0c2ab2bc89, type: 3}
@@ -523,7 +525,76 @@ MonoBehaviour:
   - {fileID: 6455386285097541050, guid: c6bd98d93ff918e43be37f82f6a6e68e, type: 3}
   - {fileID: 6812453900789682542, guid: f0c02e7a0ee387e4f84304932638ae51, type: 3}
   lightGemCooldown: 2
-  remainingKeysText: {fileID: 0}
+  remainingKeysTextMeshPro: {fileID: 0}
+  remainingKeysText:
+    m_InternalValue:
+      utf8LengthInBytes: 0
+      bytes:
+        offset0000:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        offset0016:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        offset0032:
+          byte0000: 0
+          byte0001: 0
+          byte0002: 0
+          byte0003: 0
+          byte0004: 0
+          byte0005: 0
+          byte0006: 0
+          byte0007: 0
+          byte0008: 0
+          byte0009: 0
+          byte0010: 0
+          byte0011: 0
+          byte0012: 0
+          byte0013: 0
+          byte0014: 0
+          byte0015: 0
+        byte0048: 0
+        byte0049: 0
+        byte0050: 0
+        byte0051: 0
+        byte0052: 0
+        byte0053: 0
+        byte0054: 0
+        byte0055: 0
+        byte0056: 0
+        byte0057: 0
+        byte0058: 0
+        byte0059: 0
+        byte0060: 0
+        byte0061: 0
   keySound: {fileID: 8300000, guid: 120d6f5a3fdc7d2479004eb4cac42186, type: 3}
   doorSound: {fileID: 8300000, guid: 84364ed871ae47b48a660f172ba48a96, type: 3}
   lightGemSound: {fileID: 8300000, guid: 81888ea9b6d04ca41b313d700a5d5334, type: 3}

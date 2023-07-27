@@ -11,18 +11,23 @@ public class EnemyController : NetworkBehaviour
     [SerializeField]
     private float moveSpeed;
     [SerializeField]
+    private float rotationSpeed;
+    [SerializeField]
     private Transform playerTransform;
     [SerializeField]
     private GameObject camera;
     private Rigidbody rb;
     private AiControllerState aiControllerState;
 
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         aiControllerState = GetComponent<AiControllerState>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = player.transform;
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         if(!IsHost)
             camera.SetActive(true);
@@ -43,11 +48,26 @@ public class EnemyController : NetworkBehaviour
         if (!ClientManager.Singleton.IsClientConnected.Value && IsHost)
         {
             moveVec = (playerTransform.position - transform.position).normalized;
+
             //Vector3 mv = aiControllerState?.GetMoveVec() ?? Vector3.zero;
             //moveVec = mv;
             Debug.Log("\nmoveVec : " + moveVec);
         }
         
+        if(Vector3.Distance(playerTransform.position, transform.position) > 2f * GridManager.Singleton.SizeBetweenRooms){
+            animator.SetBool("FoundPlayer", false);
+        } else {
+            Debug.Log("found player");
+            animator.SetBool("FoundPlayer", true);
+        }
+
+        if(moveVec != Vector3.zero){
+            Quaternion toRotate = Quaternion.LookRotation(moveVec, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime);
+        } else {
+        }
+
         rb.velocity = moveVec * moveSpeed * Time.fixedDeltaTime;
     }
 
@@ -61,7 +81,7 @@ public class EnemyController : NetworkBehaviour
         Debug.Log("Got here");
         Vector2 inputVec = input.Get<Vector2>();
         MoveServerRpc(inputVec.x, 0, inputVec.y);
-        Debug.Log("\nmoveVec : " + moveVec);
+        //Debug.Log("\nmoveVec : " + moveVec);
     }
 
     [ServerRpc]
