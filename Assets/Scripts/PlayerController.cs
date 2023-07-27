@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Netcode;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -24,9 +25,10 @@ public class PlayerController : NetworkBehaviour
     private float lightGemCooldownTimer = 0.0f;
 
     // Keys collected
-    private int countCollectedKeys = 0;
+    private NetworkVariable<int> countCollectedKeys = new NetworkVariable<int>();
     private int nbKeys = 0;
-    public TextMeshProUGUI remainingKeysText;
+    public TextMeshProUGUI remainingKeysTextMeshPro;
+    public NetworkVariable<FixedString64Bytes> remainingKeysText = new NetworkVariable<FixedString64Bytes>();
     private Rigidbody rb;
 
     // Sounds
@@ -40,6 +42,7 @@ public class PlayerController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        remainingKeysText.OnValueChanged += OnRemainingKeysTextChanged;
         rb = GetComponent<Rigidbody>();
         nbKeys = GridManager.Singleton.NumberOfKeys;
         animator = GetComponent<Animator>();
@@ -47,8 +50,17 @@ public class PlayerController : NetworkBehaviour
             camera.SetActive(true);
         else
             camera.SetActive(false);
-        remainingKeysText = GameObject.FindGameObjectWithTag("KeyUI").GetComponent<TextMeshProUGUI>();
-        SetCountText();
+        remainingKeysTextMeshPro = GameObject.FindGameObjectWithTag("KeyUI").GetComponent<TextMeshProUGUI>();
+        if (IsHost)
+        {
+            SetCountText();
+        }
+        else
+        {
+            remainingKeysTextMeshPro.text = remainingKeysText.Value.Value;
+        }
+        
+
     }
 
     // Update is called once per frame
@@ -93,7 +105,7 @@ public class PlayerController : NetworkBehaviour
         if (other.gameObject.CompareTag("Key"))
         {
             other.gameObject.SetActive(false);
-            countCollectedKeys++;
+            countCollectedKeys.Value++;
 
 
             SetCountText();
@@ -102,17 +114,17 @@ public class PlayerController : NetworkBehaviour
 
     void SetCountText()
     {
-        int remainingKeys = nbKeys - countCollectedKeys;
+        int remainingKeys = nbKeys - countCollectedKeys.Value;
         AudioSource.PlayClipAtPoint(keySound, transform.position);
-        remainingKeysText.text = "Remaining keys: " + remainingKeys.ToString();
+        remainingKeysText.Value = "Remaining keys: " + remainingKeys.ToString();
 
-        if (countCollectedKeys == nbKeys)
+        if (countCollectedKeys.Value == nbKeys)
         {
             Debug.Log("Keys collected");
             GridManager.Singleton.TriggerVictory.SetActive(true);
             Debug.Log("Door spawned");
             AudioSource.PlayClipAtPoint(doorSound, transform.position);
-            remainingKeysText.text = "Find the exit !";
+            remainingKeysText.Value = "Find the exit !";
         }
     }
 
@@ -133,5 +145,10 @@ public class PlayerController : NetworkBehaviour
         gemNetworkObject.Spawn();
 
         AudioSource.PlayClipAtPoint(lightGemSound, transform.position);
+    }
+
+    private void OnRemainingKeysTextChanged(FixedString64Bytes prevValue, FixedString64Bytes newValue)
+    {
+        remainingKeysTextMeshPro.text = newValue.Value;
     }
 }

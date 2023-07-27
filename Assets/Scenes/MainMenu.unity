@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff18fb574828364d8a473dad6dff2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStartScene: SceneMax
+  gameStartScene: FinalScene
 --- !u!4 &623886948
 Transform:
   m_ObjectHideFlags: 0

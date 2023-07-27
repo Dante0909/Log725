@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DakiTestChar.unity
     guid: be4a5ef040c324843b1afaa3a0bee521
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: 1a3d116303b78414589086b1d22ebcbe
   m_configObjects: {}
