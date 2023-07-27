@@ -187,9 +187,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5873729982666674338, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -261
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873729982666674339, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
+      propertyPath: m_fontSize
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873729982666674339, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
+      propertyPath: m_margin.z
+      value: -177.13426
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873729982666674339, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 5873729982666674349, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
       propertyPath: m_TagString
       value: KeyUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873729984059426137, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873729984059426137, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873729984059426137, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 5873729984059426139, guid: 13ca8625ab3781545a169a080950a5a9, type: 3}
       propertyPath: m_Name
@@ -710,6 +738,18 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 260272700
       objectReference: {fileID: 0}
+    - target: {fileID: 2611926196619931618, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611926196619931618, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611926196619931618, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2611926196642027308, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -757,6 +797,18 @@ PrefabInstance:
     - target: {fileID: 2611926196642027309, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489322510068476172, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489322510068476172, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489322510068476172, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb6d514ea73dd040b5241a90297fe13, type: 3}
