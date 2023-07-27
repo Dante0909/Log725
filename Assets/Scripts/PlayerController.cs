@@ -134,7 +134,7 @@ public class PlayerController : NetworkBehaviour
         if (countCollectedKeys.Value == nbKeys)
         {
             Debug.Log("Keys collected");
-            GridManager.Singleton.TriggerVictory.SetActive(true);
+            GridManager.Singleton.TriggerVictory.GetComponent<BoxCollider>().enabled = true;
             Debug.Log("Door spawned");
             AudioSource.PlayClipAtPoint(doorSound, transform.position);
             remainingKeysText.Value = "Find the exit !";

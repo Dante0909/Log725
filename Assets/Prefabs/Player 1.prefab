@@ -505,7 +505,7 @@ MonoBehaviour:
   - {fileID: 2282742065287548191, guid: 769f96a1be42bfe4099d0102e21715f2, type: 3}
   - {fileID: 6455386285097541050, guid: c6bd98d93ff918e43be37f82f6a6e68e, type: 3}
   - {fileID: 6812453900789682542, guid: f0c02e7a0ee387e4f84304932638ae51, type: 3}
-  lightGemCooldown: 2
+  lightGemCooldown: 1
   remainingKeysTextMeshPro: {fileID: 0}
   remainingKeysText:
     m_InternalValue:
