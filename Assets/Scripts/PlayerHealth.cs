@@ -5,25 +5,29 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : NetworkBehaviour
 {
     public static event Action<int> HealthChanged =  delegate{};
 
-    public int playerHealth;
+    public NetworkVariable<int> playerHealth = new NetworkVariable<int>();
     public AudioClip hitSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = 3;
+        playerHealth.OnValueChanged += OnPlayerHealthChanged;
+        if(IsHost)
+            playerHealth.Value = 3;
+        
+        OnPlayerHealthChanged(0, playerHealth.Value);
+
     }
 
     public void DecreaseHealth()
     {
-        playerHealth--;
-        HealthChanged?.Invoke(playerHealth);
+        playerHealth.Value--;
 
-        if (playerHealth <= 0)
+        if (playerHealth.Value <= 0)
         {
             //SceneManager.LoadScene("EndGhostWin");
             CustomNetworkManager.Singleton.SceneManager.LoadScene("EndGhostWin", LoadSceneMode.Single);
@@ -34,9 +38,8 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnPlayerHealthChanged(int prevValue, int newValue)
     {
-        
+        HealthChanged?.Invoke(newValue);
     }
 }
