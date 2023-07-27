@@ -498,7 +498,7 @@ MonoBehaviour:
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
   moveSpeed: 300
-  rotationSpeed: 150
+  rotationSpeed: 250
   camera: {fileID: 1800003146660863182}
   lightGems:
   - {fileID: 6629206107896418208, guid: 015a92a1610034c4697d9e0c2ab2bc89, type: 3}
