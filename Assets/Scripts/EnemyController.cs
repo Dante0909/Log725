@@ -54,7 +54,7 @@ public class EnemyController : NetworkBehaviour
             Debug.Log("\nmoveVec : " + moveVec);
         }
         
-        if(Vector3.Distance(playerTransform.position, transform.position) > 2f * GridManager.Singleton.SizeBetweenRoom){
+        if(Vector3.Distance(playerTransform.position, transform.position) > 2f * GridManager.Singleton.SizeBetweenRooms){
             HandleAnimationServerRpc(0.0f);
         } else {
             Debug.Log("found player");

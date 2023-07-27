@@ -194,7 +194,7 @@ public class GridManager : NetworkBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) Initialize();
+        //if (Input.GetKeyDown(KeyCode.Space)) Initialize();
     }
     void OnDrawGizmos()
     {
