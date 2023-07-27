@@ -216,8 +216,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.745283, g: 0.54066366, b: 0.20038268, a: 1}
-  m_Intensity: 5
-  m_Range: 4
+  m_Intensity: 3
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -482,7 +482,7 @@ MonoBehaviour:
   playerHealth:
     m_InternalValue: 0
   hitSound: {fileID: 8300000, guid: 5fdbaba1c487dde4a8c01cf707444992, type: 3}
-  healSound: {fileID: 0}
+  healSound: {fileID: 8300000, guid: a1a4e198fd3113047a92f5948391e8ff, type: 3}
 --- !u!114 &9095520960186551842
 MonoBehaviour:
   m_ObjectHideFlags: 0

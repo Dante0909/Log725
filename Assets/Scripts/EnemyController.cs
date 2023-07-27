@@ -16,6 +16,8 @@ public class EnemyController : NetworkBehaviour
     private Transform playerTransform;
     [SerializeField]
     private GameObject camera;
+    [SerializeField]
+    private GameObject pointlight;
     private Rigidbody rb;
     private AiControllerState aiControllerState;
 
@@ -29,10 +31,17 @@ public class EnemyController : NetworkBehaviour
         playerTransform = player.transform;
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
-        if(!IsHost)
+        if (!IsHost)
+        {
             camera.SetActive(true);
+            pointlight.SetActive(true);
+        }
         else
+        {
             camera.SetActive(false);
+            pointlight.SetActive(false);
+        }
+            
         ConnectionNotificationManager.Singleton.OnClientConnectionNotification += OnClientConnected;
     }
 
