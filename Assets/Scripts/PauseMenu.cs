@@ -51,8 +51,11 @@ public class PauseMenu : NetworkBehaviour
         pauseMenuCanvas.SetActive(false);
         //Time.timeScale = 1f;
         isPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        CustomNetworkManager.Singleton.SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        RestartClientRpc();
+        CustomNetworkManager.Singleton.Shutdown();
+        Destroy(CustomNetworkManager.Singleton.gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
     // Pause the game
@@ -68,5 +71,12 @@ public class PauseMenu : NetworkBehaviour
     {
         //SceneManager.LoadScene("MainMenu");
         CustomNetworkManager.Singleton.SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+    
+    [ClientRpc]
+    private void RestartClientRpc()
+    {
+        if(!IsHost)
+            SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
