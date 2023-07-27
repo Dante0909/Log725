@@ -43,10 +43,10 @@ public class PlayerHealth : NetworkBehaviour
     {
         AudioSource.PlayClipAtPoint(healSound, transform.position);
 
-        if (playerHealth < 3)
+        if (playerHealth.Value < 3)
         {
-            playerHealth++;
-            HealthChanged?.Invoke(playerHealth);
+            playerHealth.Value++;
+            HealthChanged?.Invoke(playerHealth.Value);
         }
     }
 
